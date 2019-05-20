@@ -1,9 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
+
 Vue.use(Vuex);
 
 
 const state = {
+  serviceURL:"http://127.0.0.1:8085"
+  ,
   // 自主招生
   todos: [{
       id: 1,
@@ -122,12 +126,27 @@ const actions = {
   // hideFooter(context) {  //自定义触发mutations里函数的方法，context与store 实例具有相同方法和属性
   //     context.commit('hide');
   // },
+  getEnrollmentGuide(context){
+    console.log("kjabsckjanskn")
+    axios({
+      method: 'post',
+      url: context.state.serviceURL+'/getEnrollmentGuide'
+    }).then(function(res){
+      console.log(res)
+      console.log("res.data.title: "+res.data.title)
+    })
+    .catch(function(err){
+      console.log("getEnrollmentGuide有点小问题")
+    })
+  }
+
 
 };
 
 const store = new Vuex.Store({
   state,
   getters,
-  mutations
+  mutations,
+  actions
 });
 export default store;

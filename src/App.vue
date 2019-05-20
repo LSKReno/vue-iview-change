@@ -39,10 +39,10 @@ body {
     );
     background-size: 1000% 1000%;
 
-    -webkit-animation: AnimationName 20s ease infinite;
-    -moz-animation: AnimationName 20s ease infinite;
-    -o-animation: AnimationName 20s ease infinite;
-    animation: AnimationName 20s ease infinite;
+    -webkit-animation: AnimationName 40s ease infinite;
+    -moz-animation: AnimationName 40s ease infinite;
+    -o-animation: AnimationName 40s ease infinite;
+    animation: AnimationName 40s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
