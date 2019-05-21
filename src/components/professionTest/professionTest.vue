@@ -11,29 +11,42 @@
 					</Breadcrumb>
 	</div>
 	<br><br>
-	 	<div class="card-style" id="startDiv">
-			<!-- 问题 -->
-      
-      <div class="question">
+    <div class="card-style" id="startDiv">
+      <div class="start-div">  
+        <h1>霍兰德职业测试</h1>
+        <p>
+          霍兰德职业兴趣自测（Self-Directed Search）是由美国职业指导专家霍兰德（John Holland）根据他本人大量的职业咨询经验及其职业类型理论编制的测评工具。
+          霍兰德认为，个人职业兴趣特性与职业之间应有一种内在的对应关系。根据兴趣的不同，人格可分为研究型（I）、艺术型（A）、社会型（S）、企业型（E）、传统型（C）、现实型（R）六个维度，每个人的性格都是这六个维度的不同程度组合。
+        </p>
+        <br>
+        <Button class="button" @click="startTest">开始测试</Button>
+      </div>
+    </div>
+
+	 	<div class="card-style" id="qDiv" hidden="hidden">
+      <!-- 问题 -->
+      <div class="div">
         <p>{{index+1}}/60</p>
+        <br>
         <p>{{questions[index].title}}</p>
-			</div>
-			<br><br><br>
-			
-			<!-- 回答 -->
-			<!-- <div class="answer" v-for="(answer,ind) in allQuestions.answers[index]">
-				<i-Button class="font"  type="ghost" @click="uploadAnswer(ind,index)">
-					{{answer}}
-				</i-Button>
-			</div> -->
+  			<br><br>
+        <div class='button-div'>
+          <Button class="button" @click="handleAnswer(1)">是的</Button>
+          <Button class="button" @click="handleAnswer(0)">不是</Button>
+        </div>
+      </div>
 		</div>
 			
 			<!-- 结果 -->
-			<!-- <div class="card-style" id="endDiv" hidden="hidden">
-				<h3></h3>
-				<p></p>
-				<Button @click="again">再测一次</Button>
-			</div> -->
+			<div class="card-style" id="endDiv" hidden="hidden">
+				<div class="div">
+          <h2>{{resultWord}}</h2>
+          <p>{{detil}}</p>
+				  <p>{{typeWord}}</p>
+          <p>{{infoWord}}</p>
+        </div>
+				<!-- <Button @click="again">再测一次</Button> -->
+			</div>
 			<!-- 返回按钮 -->
 			<Button class="back-button" type="text" @click="backToButtonHome" >
 				<Icon type="android-arrow-back" size="32" color="#fff"></Icon>
@@ -46,8 +59,12 @@
 export default {
 	data(){
 		return {
-			myResults:{},
-			index:0,
+			myResults:[],
+      index:0,
+      resultWord:"您的霍兰德类型是",
+      detil:"",
+      typeWord:"",
+      infoWord:"",
 			questions:[
     {"cateName": "常规型", "cateKey": "C", "cateId": 1, "title": "对别人借我的和我借别人的东西，我都能记得很清楚。", "score": 1},
     {"cateName": "常规型", "cateKey": "C", "cateId": 1, "title": "我喜欢经常请示上级。", "score": 1},
@@ -164,34 +181,105 @@ export default {
 		},
 
 		startTest(){
+      document.getElementById("startDiv").hidden="hidden";
+			document.getElementById("qDiv").hidden=null;
+    },
+    
+    handleAnswer (answer) {
+      var now = this._data.index;
+      var question = this._data.questions[now];
+      if(now == 59){
+        console.log("ssssss")
+        this.showResult();
+      }else{
+      if(question.cateKey == "R") {
+        this._data.results[0].score += answer === question.score ? 1 : 0
+      } 
+      else if(question.cateKey == "C") {
+        this._data.results[1].score += answer === question.score ? 1 : 0 
+      } 
+      else if(question.cateKey == "E") {
+        this._data.results[2].score += answer === question.score ? 1 : 0
+      }
+      else if(question.cateKey == "S") {
+        this._data.results[3].score += answer === question.score ? 1 : 0
+      }
+      else if(question.cateKey == "A") {
+        this._data.results[4].score += answer === question.score ? 1 : 0
+      }
+      else{
+        this._data.results[5].score += answer === question.score ? 1 : 0
+      }
+      this._data.index++;
+      }
+    },
 
-		},
+    showResult(){
+      console.log("jdfkaljdf")
+      var result = this._data.results;
+      result.sort((x, y) => {
+        if (x.score > y.score) {
+          return -1
+        } else if (x.score < y.score) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+      this.resultWord += result[0].cateKey + result[1].cateKey + result[2].cateKey;
+      this.detil += result[0].cateKey + "（" + result[0].cateName + "）" + result[1].cateKey + "（" + result[1].cateName + "）" + result[2].cateKey + "（" + result[2].cateName + "）";
+      this.typeWord += result[0].type;
+      this.infoWord += result[0].info;
+      document.getElementById("qDiv").hidden="hidden";
+			document.getElementById("endDiv").hidden=null;
+    },
 
-		again(){
-			this.index=0;
-			document.getElementById("startDiv").hidden=null;
-			document.getElementById("endDiv").hidden="hidden";
-			this.myResults = {};
-		},
+		// again(){
+		// 	this.index=0;
+		// 	document.getElementById("qDiv").hidden=null;
+		// 	document.getElementById("endDiv").hidden="hidden";
+		// 	this.myResults = {};
+		// },
 		
 	}
 }
 </script>
 
 <style>
-.question{
+.start-div{
+  font-family: serif;
+	font-size: 1.5rem;
+	color: black;
+  flex-direction: column;
+  display:flex;
+	align-items:center;
+}
+.div{
 	font-family: serif;
 	font-size: 1.8rem;
 	color: black;
+  flex-direction: column;
+  display:flex;
+	align-items:center;
 }
-.answer{
+/* .p-center{
 	display:flex;
 	align-items:center;
 	justify-content:center;
+} */
+.button-div{
+  display:flex;
+  width: 80%;
+  justify-content:space-around;
+}
+.button{
+  width: 100px;
+  height: 50px;
+  font-size: 18px;
 }
 .card-style{
 	background-color: #f4f8faef;
-	width: 50rem;
+	width: 60rem;
 	height: 25rem;
 	margin: 5rem auto 0;
 	box-shadow: 0.0625rem 0.4375rem 1.5625rem #c9c7c8;
@@ -203,9 +291,6 @@ export default {
 .back-button{
 	position: fixed;
 	bottom: 2rem;
-}
-.font{
-	color: aliceblue;
 }
 #big{
 	color:white;
