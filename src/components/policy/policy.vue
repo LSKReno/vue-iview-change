@@ -24,8 +24,9 @@
 		<!-- 需要通过选择学校来动态改变内容，所以图片和所有连接不可以写死 -->
     <Row type="flex" justify="space-around" class="code-row-bg">
         <Col span="4" >
-          <div class="button-tab">
-			      <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" />
+          <div class="selector-div">
+			      <!-- <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" /> 用on-change也可以实现-->
+            <al-selector style="width:210px" level="0" data-type="name" v-model="sname" searchable size="large"/>
           </div>
         </Col>
         <Col span="9">
@@ -77,19 +78,11 @@
     <br>
     <Row type="flex" justify="space-around" class="code-row-bg">
         <Col span="4">
-          <Card>
-            <p slot="title">{{name}}</p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-          </Card>
+
         </Col>
         <Col span="9">
           <Card>
-            <p slot="title"></p>
+            <p slot="title">{{sname[0]}}</p>
             <p><a class="link-a" @click="guideText">{{title2}}</a></p>
             <p><a class="link-a" @click="guideText">{{title2}}</a></p>
             <p><a class="link-a" @click="guideText">{{title2}}</a></p>
@@ -123,7 +116,7 @@ export default {
 	data(){
 		return {
       modal: false,
-      name: '无',
+      sname: ["请先选择省份"],
 			title1: '自主招生百问百答',
       title2: '最新自招政策推荐',
       title3: '教育部最新文件以及相应解释',
@@ -141,41 +134,41 @@ export default {
 	},
 	methods: {
 		backToButtonHome () {
-            this.$router.push({
-                 path: '/buttonHome'
-            });        
-        },
-    change(data){
-			this.name = data;
+      this.$router.push({
+      path: '/buttonHome'
+      });        
     },
     guideText() {
-            this.modal = true;
-    }
+      this.modal = true;
+    },
+    // change(data){
+		// 	this.sname = data;
+    // },对应上方注释
 	}
 }
 </script>
 
 <style>
 .breadcrumb {
-    padding: 0.65rem;
-    background-color: aliceblue;
+  padding: 0.65rem;
+  background-color: aliceblue;
 }
 .font {
-    color: aliceblue;
+  color: aliceblue;
 }
 .back-button {
-    position: fixed;
-    bottom: 2rem;
+  position: fixed;
+  bottom: 2rem;
 }
 .cascader {
-    width: 100%;
+  width: 100%;
 }
 .link-a{
-    font-size: 25px;
-    color: rgba(228, 217, 217, 0.945);
+  font-size: 25px;
+  color: rgba(228, 217, 217, 0.945);
 }
 .right-col-textarea {
-    float: right;
-    background-color: aliceblue;
+  float: right;
+  background-color: aliceblue;
 }
 </style>
