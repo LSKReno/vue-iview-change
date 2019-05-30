@@ -165,7 +165,7 @@ export default {
             msg: "中心服务自助终端",
             login_modal: false,
             form: {
-                userName: "iview_admin",
+                userName: "",
                 password: ""
             },
             rules: {
@@ -198,6 +198,27 @@ export default {
             this.login_modal = true;
         },
         handleSubmit() {
+            console.log("LSKDMNOLASKD")
+            this.$http({
+                method:'post',
+                url:"http://118.202.11.253:8085/home/login",
+                data:{
+                    "userName":this.form.userName,
+                    "password":this.form.password
+                }
+            }).then(resp =>{
+                if(resp.data.code==123){
+                    this.$Message.error("没有此用户");
+                }else if(resp.data.code==124){
+                    this.$Message.warning("密码错误请重新输入");
+                }else if(resp.data.code==200){
+                    this.$Message.success("亲爱的，您已登陆");
+                    this.login_modal = false;
+                }
+                
+            }).catch(resp => {
+                console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
             this.$refs.loginForm.validate(valid => {
                 if (valid) {
                     Cookies.set("user", this.form.userName);
@@ -207,8 +228,7 @@ export default {
                     } else {
                         Cookies.set("access", 1);
                     }
-                    this.$Message.success("亲爱的，您已登陆");
-                    this.login_modal = false;
+            
                 }
             });
         },

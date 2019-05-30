@@ -26,7 +26,7 @@
         <Col span="4" >
           <div class="selector-div">
 			      <!-- <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" /> 用on-change也可以实现-->
-            <al-selector style="width:210px" level="0" data-type="name" v-model="sname" searchable size="large"/>
+            <al-selector style="width:210px" level="0" @on-change="send" data-type="name" v-model="sname" searchable size="large"/>
           </div>
         </Col>
         <Col span="9">
@@ -78,17 +78,22 @@
     <br>
     <Row type="flex" justify="space-around" class="code-row-bg">
         <Col span="4">
-
+      
         </Col>
         <Col span="9">
           <Card>
             <p slot="title">{{sname[0]}}</p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
+            <p>
+              <a v-for="index in policyList.length" class="link-a" @click="guideText(index)">
+                {{policyList[index-1].title}}
+                <p></p>
+                <Modal class="modal" v-model="modal" v-bind:title="policyList[count].title" width="1400" @on-ok="ok" @on-cancel="cancel">
+                  <p>{{policyList[count].content}}</p>
+                </Modal>
+              </a>
+              
+            </p>
+            
           </Card>
         </Col>
         <Col span="9">
@@ -104,9 +109,7 @@
         </Col>
     </Row>
 	</div>
-	<Modal class="modal" v-model="modal" width="1400" @on-ok="ok" @on-cancel="cancel">
-    <p>{{title1}}</p>
-  </Modal>
+
   </div>
 </template>
 
@@ -115,11 +118,14 @@
 export default {
 	data(){
 		return {
+      count: 0,
       modal: false,
+      policyList:[],
       sname: ["请先选择省份"],
 			title1: '自主招生百问百答',
       title2: '最新自招政策推荐',
       title3: '教育部最新文件以及相应解释',
+      content: '',
       value2: 0,
       setting: {
         height: 300,
@@ -133,13 +139,30 @@ export default {
 		}
 	},
 	methods: {
+    send(){
+      this.$http({
+          method:'post',
+          url:"http://118.202.11.253:8085/newEntrancePolicy/getProvince/getNewEntrancePolicy",
+          data:{
+            "province":this.sname[0]
+          }
+          }).then(resp =>  {
+            console.log(resp);
+            this.policyList=resp.data.data;
+            // this.title2=resp.data.data[0].title;
+            // this.content=resp.data.data[0].content;
+          }).catch(resp => {
+            console.log('请求失败：'+resp.status+','+resp.statusText);
+          });
+          },
 		backToButtonHome () {
       this.$router.push({
       path: '/buttonHome'
       });        
     },
-    guideText() {
+    guideText(data) {
       this.modal = true;
+      this.count = data-1;
     },
     // change(data){
 		// 	this.sname = data;

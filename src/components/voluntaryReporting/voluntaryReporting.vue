@@ -77,10 +77,9 @@
                 <span class="title">录取概率 ></span>
                 <i class="iconfont icon-youhua-"></i>
                 <div class="more-search">
-                    <span class="spanActive">全部</span>
-                    <span class>冲刺</span>
-                    <span class>稳妥</span>
-                    <span class>保底</span>
+                    <span v-for="(c1,index) in choice1" @click="handleClick(index)":class="{'spanActive':current===index}">
+                        {{c1}}
+                    </span>
                 </div>
                 <div style="clear: both;"></div>
             </li>
@@ -174,6 +173,8 @@
 export default {
     data() {
         return {
+            current: 0,
+            choice1:["全部","冲刺","稳妥","保底"],
             artsAndSciences: "sciences",
             value: "",
             universities: [
@@ -206,6 +207,9 @@ export default {
         };
     },
     methods: {
+        handleClick(index){
+            this.current = index
+        },
         predict() {
             this.$Notice.open({
                 title: "推荐规则",
@@ -246,6 +250,9 @@ export default {
 </script>
 
 <style scoped>
+.spanActive{
+    color: rgb(77, 161, 240);
+}
 li {
     margin: 0.2rem;
     padding: 0;

@@ -30,7 +30,7 @@
                             </Input>
                         </FormItem>
                         <FormItem>
-                            <Button class="login-bt" @click="handleSubmit" type="ghost" long>登录</Button>
+                            <Button class="login-bt" @click="send" long>登录</Button>
                         </FormItem>
                     </Form>
                     <p class="login-tip">输入任意用户名和密码即可</p>
@@ -62,6 +62,21 @@ export default {
         };
     },
     methods: {
+        send(){
+            console.log("LSKDMNOLASKD")
+            this.$http({
+                method:'post',
+                url:"http://118.202.11.253:8085/home/login",
+                data:{
+                    "userName":form.userName,
+                    "password":form.password
+                }
+            }).then(function(resp){
+                console.log(resp.data);
+            }).catch(resp => {
+                console.log('请求失败：'+resp.status+','+resp.statusText);
+              });
+            },
         screenFull(){
             if (!screenfull.enabled) { // 如果不允许进入全屏，发出不允许提示
                 this.$message({
@@ -77,7 +92,6 @@ export default {
                 })
         },
         handleSubmit () {
-            
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
                     Cookies.set('user', this.form.userName);
