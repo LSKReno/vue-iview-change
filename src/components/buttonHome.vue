@@ -80,15 +80,15 @@
                     >自主招生</i-button>
                 </Col>
                 <Col span="11">
-                    <!-- 志愿填报是page4 -->
+                    <!-- 志愿填报（专业指导）是page4 -->
                     <i-button
                         @click="toVoluntaryReporting"
                         type="primary"
                         icon="clipboard"
                         class="voluntary"
                     >
-                        志愿填报
-                        <br>查询
+                    专业选择指导
+                        
                     </i-button>
                 </Col>
                 <Col span="4">
@@ -198,7 +198,6 @@ export default {
             this.login_modal = true;
         },
         handleSubmit() {
-            console.log("LSKDMNOLASKD")
             this.$http({
                 method:'post',
                 url:"http://118.202.11.253:8085/home/login",

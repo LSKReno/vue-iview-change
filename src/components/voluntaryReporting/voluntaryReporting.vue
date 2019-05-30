@@ -6,7 +6,7 @@
                     <Icon type="ios-home-outline"></Icon>首页
                 </Breadcrumb-item>
                 <Breadcrumb-item>
-                    <Icon type="ios-search"></Icon>志愿填报查询
+                    <Icon type="ios-search"></Icon>专业选择指导
                 </Breadcrumb-item>
             </Breadcrumb>
         </div>
@@ -33,15 +33,15 @@
                             </RadioGroup>
                         </Col>
                         <Col span="3" style="font-size:1.25rem;">
-                            <Input placeholder="请输入分数..."></Input>
+                            <Input placeholder="请输入分数..." v-model="score"></Input>
                         </Col>
                         <Col span="3" style="font-size:1.25rem;">
                             &nbsp;
-                            <Button shape="circle" icon="ios-search" @click="predict">预测</Button>
+                            <Button shape="circle" icon="ios-search" @click="scorePredict">预测</Button>
                         </Col>
                     </Row>
                 </TabPane>
-                <TabPane label="按位次查询" icon="md-school" name="name2">
+                <TabPane label="新高考志愿填报指导" icon="md-school" name="name2">
                     <Row>
                         <Col span="3">
                             <al-selector
@@ -53,13 +53,7 @@
                                 @on-change="change"
                             />
                         </Col>
-                        <Col span="1" style="font-size:1.25rem;">科类 ></Col>
-                        <Col span="3" style="font-size:1.25rem;">
-                            <RadioGroup v-model="artsAndSciences" type="button" size="large">
-                                <Radio label="理科"></Radio>
-                                <Radio label="文科"></Radio>
-                            </RadioGroup>
-                        </Col>
+                        
                         <Col span="3" style="font-size:1.25rem;">
                             <Input placeholder="请输入位次..."></Input>
                         </Col>
@@ -73,93 +67,42 @@
         </div>
         
         <div>
-            <li class="listSpan">
-                <span class="title">录取概率 ></span>
-                <i class="iconfont icon-youhua-"></i>
+            
                 <div class="more-search">
-                    <span v-for="(c1,index) in choice1" @click="handleClick(index)":class="{'spanActive':current===index}">
-                        {{c1}}
+                    <span class="title">录取概率 ></span>
+                    <span v-for="(c1,index) in choice1" @click="handleClick1(index,c1)":class="{'spanActive':current1===index}">
+                        {{c1}}&nbsp;&nbsp;&nbsp;
                     </span>
                 </div>
-                <div style="clear: both;"></div>
-            </li>
-            <li class="listSpan">
-                <span class="title">所属地区 ></span>
-                <i class="iconfont icon-youhua-"></i>
+                
                 <div class="more-search">
-                    <span class="spanActive">全部</span>
-                    <span class>北京</span>
-                    <span class>天津</span>
-                    <span class>河北</span>
-                    <span class>河南</span>
-                    <span class>山东</span>
-                    <span class>山西</span>
-                    <span class>陕西</span>
-                    <span class>内蒙古</span>
-                    <span class>辽宁</span>
-                    <span class>吉林</span>
-                    <span class>黑龙江</span>
-                    <span class>上海</span>
-                    <span class>江苏</span>
-                    <span class>安徽</span>
-                    <span class>江西</span>
-                    <span class>湖北</span>
-                    <span class>湖南</span>
-                    <span class>重庆</span>
-                    <span class>四川</span>
-                    <span class>贵州</span>
-                    <span class>云南</span>
-                    <span class>广东</span>
-                    <span class>广西</span>
-                    <span class>福建</span>
-                    <span class>甘肃</span>
-                    <span class>宁夏</span>
-                    <span class>新疆</span>
-                    <span class>西藏</span>
-                    <span class>海南</span>
-                    <span class>浙江</span>
-                    <span class>青海</span>
+                    <span class="title">目标省份 ></span>
+                    <span v-for="(c2,index) in choice2" v-model="province" @click="handleClick2(index,c2)":class="{'spanActive':current2===index}">
+                        {{c2}}&nbsp;&nbsp;&nbsp;
+                    </span>
                 </div>
-                <div style="clear: both;"></div>
-            </li>
-            <li class="listSpan">
-                <span class="title">高校层次 ></span>
+                
                 <div class="more-search">
-                    <span class="spanActive">全部</span>
-                    <span class>985工程</span>
-                    <span class>211工程</span>
-                    <span class>一流大学建设高校</span>
-                    <span class>一流学科建设高校</span>
-                    <span class>教育部直属</span>
-                    <span class>中央部委</span>
-                    <span class>自主招生试点</span>
+                    <span class="title">高校层次 ></span>
+                    <span v-for="(c3,index) in choice3" @click="handleClick3(index)":class="{'spanActive':current3===index}">
+                        {{c3}}&nbsp;&nbsp;&nbsp;
+                    </span>
                 </div>
-            </li>
-            <li class="listSpan">
-                <span class="title">录取批次 ></span>
+
                 <div class="more-search">
-                    <span class="spanActive">全部</span>
-                    <span class>本科提前批</span>
-                    <span class>本科批</span>
-                    <span class>地方专项计划本科批</span>
-                    <span class>专科提前批</span>
-                    <span class>专科批</span>
+                    <span class="title">录取批次 ></span>
+                    <span v-for="(c4,index) in choice4" @click="handleClick4(index)":class="{'spanActive':current4===index}">
+                        {{c4}}&nbsp;&nbsp;&nbsp;
+                    </span>
+                    
                 </div>
-                <div style="clear: both;"></div>
-            </li>
+            
         </div>
 
-        <div>
-            <Input v-model="value" placeholder="输入你的分数" style="width: 300px"/>
-            <Button type="primary" @click="match">开始匹配</Button>
+        <div id="resultDiv" hidden="hidden">
+            <Table border :columns="columns" :data="sccessUniversity"></Table>
         </div>
-        <div id="matchedDiv" hidden="hidden">
-            <span>你可以填报的学校和专业为</span>
-            <div v-for="(uni,index) in sccessUniversity">
-                <label>{{index}}.</label>
-                <label>{{uni.name}},录取分数为{{uni.score}}</label>
-            </div>
-        </div>
+
 
         <div>
             <Button class="back-button" type="text" @click="backToButtonHome">
@@ -173,45 +116,233 @@
 export default {
     data() {
         return {
-            current: 0,
+            current1: 0,
+            current2: 0,
+            current3: 0,
+            current4: 0,
             choice1:["全部","冲刺","稳妥","保底"],
-            artsAndSciences: "sciences",
-            value: "",
-            universities: [
+            choice2:[
+                    "全部",
+                    "北京",
+                    "辽宁",
+                    "河南",
+                    "河北",
+                    "天津",
+                    "山东",
+                    "山西",
+                    "陕西",
+                    "内蒙古",
+                    "吉林",
+                    "黑龙江",
+                    "上海",
+                    "江苏",
+                    "安徽",
+                    "江西",
+                    "湖北",
+                    "湖南",
+                    "重庆",
+                    "四川",
+                    "贵州",
+                    "云南",
+                    "广东",
+                    "广西",
+                    "福建",
+                    "甘肃",
+                    "宁夏",
+                    "新疆",
+                    "西藏",
+                    "海南",
+                    "浙江",
+                    "青海",
+                ],
+            choice3:["全部","985工程","211工程","","一流大学建设高校","一流学科建设高校","教育部直属","中央部委","自主招生试点"],
+            choice4:["全部","本科提前批","本科批","地方专项计划本科批","专科提前批","专科批"],
+            columns:[
+                {
+                    title: '学校名称',
+                    key: 'name',
+                },
+                {
+                    title: '所在省份',
+                    key: 'province'
+                },
+                {
+                    title: '2018年最高分数',
+                    key: 'highScore'
+                },
+                {
+                    title: '2018年最低分数',
+                    key: 'lowScore'
+                },
+                {
+                    title: '录取批次',
+                    key: 'degree'
+                },
+                {
+                    title: '知名专业',
+                    key: 'major'
+                },
+            ],
+            universities:[
                 {
                     name: "清华大学",
-                    pro: [
-                        { name: "软件工程", score: 700 },
-                        { name: "自动化", score: 680 },
-                        { name: "汉语言文学", score: 670 }
-                    ]
+                    province:"北京",
+                    degree:"本科批",
+                    major: "土木工程，计算机科学与技术，软件工程",
+                    highScore: 650,
+                    lowScore: 600,
+                },
+                {
+                    name: "北京大学",
+                    province:"北京",
+                    degree:"本科批",
+                    major: "土木工程，计算机科学与技术，软件工程",
+                    highScore: 660,
+                    lowScore: 620,
                 },
                 {
                     name: "东北大学",
-                    pro: [
-                        { name: "软件工程", score: 630 },
-                        { name: "自动化", score: 620 },
-                        { name: "汉语言文学", score: 610 }
-                    ]
+                    province:"辽宁",
+                    degree:"本科批",
+                    major: "自动化，计算机科学与技术，软件工程",
+                    highScore: 600,
+                    lowScore: 550,
                 },
                 {
-                    name: "成都信息工程学院",
-                    pro: [
-                        { name: "软件工程", score: 500 },
-                        { name: "自动化", score: 480 },
-                        { name: "汉语言文学", score: 470 }
-                    ]
+                    name: "大连理工大学",
+                    province:"辽宁",
+                    degree:"本科批",
+                    major: "水产养殖，计算机科学与技术，软件工程",
+                    highScore: 610,
+                    lowScore: 580,
+                },
+                {
+                    name: "华北电力大学",
+                    province:"北京",
+                    degree:"本科批",
+                    major: "机械自动化，电气自动化，软件工程",
+                    highScore: 540,
+                    lowScore: 522,
+                },
+                {
+                    name: "天津大学",
+                    province:"天津",
+                    degree:"本科批",
+                    major: "经济管理，电气自动化，软件工程",
+                    highScore: 630,
+                    lowScore: 590,
+                },
+                {
+                    name: "郑州大学",
+                    province:"河南",
+                    degree:"本科批",
+                    major: "土木工程，计算机科学与技术，软件工程",
+                    highScore: 550,
+                    lowScore: 500,
                 }
-            ],
+                ],
+            artsAndSciences: "sciences",
+            score: "",
             sccessUniversity: []
         };
     },
     methods: {
-        handleClick(index){
-            this.current = index
+        handleClick1(index,c1){
+            this.current1 = index
+            let probability = c1;
+            console.log(probability)
+            let successMatch = [];
+            if(probability == "全部"){
+                for (let i = 0; i < this.universities.length; i += 1) {
+                const name = this.universities[i].name;
+                const province = this.universities[i].province;
+                const degree = this.universities[i].degree;
+                const major = this.universities[i].major;
+                const highScore = this.universities[i].highScore;
+                const lowScore = this.universities[i].lowScore;                                    
+                    
+                        successMatch.push({
+                            name: name,
+                            province: province,
+                            degree: degree,
+                            major: major,
+                            highScore: highScore,
+                            lowScore: lowScore,    
+                        });
+                }
+            }else if(probability == "冲刺"){
+
+            }else if(probability == "稳妥"){
+
+            }else{
+                
+            }
+            
         },
-        predict() {
-            this.$Notice.open({
+        handleClick2(index,c2){
+            this.current2 = index
+            let Cprovince = c2;
+            console.log(Cprovince)
+            let successMatch = [];
+            if(Cprovince == "全部"){
+                for (let i = 0; i < this.universities.length; i += 1) {
+                const name = this.universities[i].name;
+                const province = this.universities[i].province;
+                const degree = this.universities[i].degree;
+                const major = this.universities[i].major;
+                const highScore = this.universities[i].highScore;
+                const lowScore = this.universities[i].lowScore;                                    
+                    
+                        successMatch.push({
+                            name: name,
+                            province: province,
+                            degree: degree,
+                            major: major,
+                            highScore: highScore,
+                            lowScore: lowScore,    
+                        });
+                }    
+            }else{
+            for (let i = 0; i < this.universities.length; i += 1) {
+                const name = this.universities[i].name;
+                const province = this.universities[i].province;
+                const degree = this.universities[i].degree;
+                const major = this.universities[i].major;
+                const highScore = this.universities[i].highScore;
+                const lowScore = this.universities[i].lowScore;                                    
+                    if (Cprovince == province) {
+                        successMatch.push({
+                            name: name,
+                            province: province,
+                            degree: degree,
+                            major: major,
+                            highScore: highScore,
+                            lowScore: lowScore,    
+                        });
+                    }
+                }
+            }    
+            this.sccessUniversity = successMatch;
+        },
+        handleClick3(index){
+            this.current3 = index
+        },
+        handleClick4(index){
+            this.current4 = index
+        },
+        backToButtonHome() {
+            this.$router.push({
+                path: "/buttonHome"
+            });
+        },
+        scorePredict() {
+            let score = this.score;
+            let successMatch = [];
+            //要推荐专业时，数据库专业对应的分数为一个lst，嵌套for
+            if (score == ""){
+                this.$Message.warning("请先输入分数");
+            }else{
+                this.$Notice.open({
                 title: "推荐规则",
                 desc:
                     "1、本系统数据均由高校提供，具备参考价值；\n" +
@@ -219,47 +350,42 @@ export default {
                     "3、本系统推荐的院校名单，仅供志愿参考。",
                 duration: 6
             });
-        },
-        backToButtonHome() {
-            this.$router.push({
-                path: "/buttonHome"
-            });
-        },
-        match() {
-            let value = this.value;
-            let successMatch = [];
-            for (let i = 0; i < this.universities.length; i += 1) {
-                const name = this.universities[i].name;
-                for (let k = 0; k < this.universities[i].pro.length; k += 1) {
-                    let proName = this.universities[i].pro[k].name;
-                    let score = this.universities[i].pro[k].score;
-                    if (value >= score) {
-                        successMatch.push({
-                            name: name,
-                            pro: proName,
-                            score: score
-                        });
+                for (let i = 0; i < this.universities.length; i += 1) {
+                    const name = this.universities[i].name;
+                    const province = this.universities[i].province;
+                    const degree = this.universities[i].degree;
+                    const major = this.universities[i].major;
+                    const highScore = this.universities[i].highScore;
+                    const lowScore = this.universities[i].lowScore;
+                                        
+                        if (lowScore <= score) {
+                            successMatch.push({
+                                name: name,
+                                province: province,
+                                degree: degree,
+                                major: major,
+                                highScore: highScore,
+                                lowScore: lowScore,    
+                            });
+                        }
                     }
+                
+                this.sccessUniversity = successMatch;
+                document.getElementById("resultDiv").hidden = null;
                 }
-            }
-            this.sccessUniversity = successMatch;
-            document.getElementById("matchedDiv").hidden = null;
-        }
-    }
-};
+            } 
+        }   
+    };
 </script>
 
 <style scoped>
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .spanActive{
     color: rgb(77, 161, 240);
-}
-li {
-    margin: 0.2rem;
-    padding: 0;
-    vertical-align: baseline;
-    display: inline;
-    line-height: 2.5rem;
-    /* float:left; */
 }
 .back-button {
     position: fixed;
