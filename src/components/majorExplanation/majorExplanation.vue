@@ -196,7 +196,7 @@
             </Row>
         </div>
 
-        <Modal class="modal" v-model="mainModal" width="1200" >
+        <Modal class="modal" v-model="mainModal" width="1200">
             <p slot="header" style="color:black;text-align:center;font-size:1.25rem;">
                 <span>收入最高的十大专业</span>
             </p>
@@ -237,21 +237,17 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业前景：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="mainbody-per ">
+                <div class="mainbody-per">
                     <div class="mainbody-per-num">
                         <p style="font-size:3rem;margin-left:4.6rem">2</p>
                     </div>
@@ -282,15 +278,11 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业前景：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
@@ -301,7 +293,9 @@
                         <p style="font-size:3rem;margin-left:4.6rem">3</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>网络工程</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>网络工程</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入：</span>5600元
@@ -325,26 +319,24 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业前景：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="mainbody-per ">
+                <div class="mainbody-per">
                     <div class="mainbody-per-num">
                         <p style="font-size:3rem;margin-left:4.6rem">4</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>微电子学</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>微电子学</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入</span>：5503元
@@ -368,15 +360,11 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业前景：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
@@ -387,7 +375,9 @@
                         <p style="font-size:3rem;margin-left:4.6rem">5</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>计算机科学与技术</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>计算机科学与技术</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入：</span>5452元
@@ -411,26 +401,24 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业前景：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="mainbody-per ">
+                <div class="mainbody-per">
                     <div class="mainbody-per-num">
                         <p style="font-size:3rem;margin-left:4.6rem">6</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>法语</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>法语</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入：</span> 5426元
@@ -454,15 +442,11 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业前景：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
@@ -473,7 +457,9 @@
                         <p style="font-size:3rem;margin-left:4.6rem">7</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>信息工程</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>信息工程</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入：</span>5388元
@@ -497,33 +483,31 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业前景：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="mainbody-per ">
+                <div class="mainbody-per">
                     <div class="mainbody-per-num">
                         <p style="font-size:3rem;margin-left:4.6rem">8</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>物联网工程</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>物联网工程</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入：</span>5363元
                             </p>
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">专业介绍：</span>培养建设、应用、维护和管理物联网系统所需要的系统规划设计、产品制造、系统集成等方面的综合性的具有国际视野和国际竞争力的高级工程技术人才...
-                                <a 
+                                <a
                                     @click="majorInfo"
                                 >[详细]</a>
                             </p>
@@ -540,15 +524,11 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a 
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业方向：
-                                    <a 
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
@@ -559,7 +539,9 @@
                         <p style="font-size:3rem;margin-left:4.6rem">9</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>电子科学与技术</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>电子科学与技术</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入：</span>5147元
@@ -583,26 +565,24 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业方向：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="mainbody-per ">
+                <div class="mainbody-per">
                     <div class="mainbody-per-num">
                         <p style="font-size:3rem;margin-left:4.6rem">10</p>
                     </div>
                     <div class="mainbody-per-txt">
-                        <div class="mainbody-per-start"><strong>信息与计算科学</strong></div>
+                        <div class="mainbody-per-start">
+                            <strong>信息与计算科学</strong>
+                        </div>
                         <div class="mainbody-per-nowtxtbox">
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold">毕业半年后月收入：</span>5137元
@@ -626,15 +606,11 @@
                             <p class="mainbody-per-nowtxt">
                                 <span class="bold bold-active1">
                                     开设院校：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                                 <span class="bold">
                                     就业方向：
-                                    <a
-                                    @click="majorInfo"
-                                    >查看所有</a>
+                                    <a @click="majorInfo">查看所有</a>
                                 </span>
                             </p>
                         </div>
@@ -651,7 +627,7 @@
             </div>
         </Modal>
 
-       <Modal class="modal" v-model="subModal" width="1200" >
+        <Modal class="modal" v-model="subModal" width="1200">
             <p slot="header" style="color:black;text-align:center;font-size:1.25rem;">
                 <span>哲学</span>
             </p>
@@ -1055,7 +1031,7 @@
                 </div>
             </div>
 
-           <div slot="footer">
+            <div slot="footer">
                 <i-button
                     type="circle"
                     size="large"
@@ -1122,7 +1098,7 @@ export default {
         relevantMajorInfo() {
             this.mainModal = true;
         },
-        majorInfo(){
+        majorInfo() {
             this.subModal = true;
             this.drawChart1();
             this.drawChart2();
@@ -1530,9 +1506,8 @@ table tr:nth-child(even) {
 .mainbody-per-right {
     padding: 0 165px 20px 210px;
 }
-div{
+div {
     margin: 0;
     padding: 0;
 }
-
 </style>

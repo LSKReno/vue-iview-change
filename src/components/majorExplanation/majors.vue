@@ -644,6 +644,8 @@
         <Button class="back-button" type="text" @click="backToButtonHome">
             <Icon type="android-arrow-back" size="32" color="#fff"></Icon>
         </Button>
+        <Page :total="100" size=small class="pager" page-size=10  />
+
     </div>
 </template>
 
@@ -976,6 +978,11 @@ export default {
 </script>
 
 <style scoped>
+pager{
+    text-align:center;
+    margin-left: auto; 
+    margin-right: auto;
+}
 table {
     color: black;
     border: 1px solid black;

@@ -74,8 +74,17 @@
           </Card>
         </Col>
     </Row>
-    <Modal class="modal" v-model="modal" width="1400" @on-ok="ok" @on-cancel="cancel">
+    <Modal class="modal" v-model="modal" width="1000" >
       <p>{{title1}}</p>
+
+      <div slot="footer">
+                <i-button
+                    type="circle"
+                    size="large"
+                    style="width:100%;background-color:#ff9999;color:white;"
+                    @click="modal=false"
+                >我知道啦</i-button>
+      </div>
     </Modal>
 	</div>
 
