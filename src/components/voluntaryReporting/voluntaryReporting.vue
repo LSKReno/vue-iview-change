@@ -59,7 +59,7 @@
                         </Col>
                         <Col span="3" style="font-size:1.25rem;">
                             &nbsp;
-                            <Button shape="circle" icon="ios-search" @click="predict">预测</Button>
+                            <Button shape="circle" icon="ios-search" @click="positionPredict">预测</Button>
                         </Col>
                     </Row>
                 </TabPane>
@@ -101,6 +101,10 @@
 
         <div id="resultDiv" hidden="hidden">
             <Table border :columns="columns" :data="sccessUniversity"></Table>
+        </div>
+
+        <div id="PDiv" hidden="hidden">
+            <Table border :columns="columns" :data="PsccessUniversity"></Table>
         </div>
 
 
@@ -243,7 +247,9 @@ export default {
                 ],
             artsAndSciences: "sciences",
             score: "",
-            sccessUniversity: []
+            position:"",
+            sccessUniversity: [],
+            PsccessUniversity: [],
         };
     },
     methods: {
@@ -253,13 +259,13 @@ export default {
             console.log(probability)
             let successMatch = [];
             if(probability == "全部"){
-                for (let i = 0; i < this.universities.length; i += 1) {
-                const name = this.universities[i].name;
-                const province = this.universities[i].province;
-                const degree = this.universities[i].degree;
-                const major = this.universities[i].major;
-                const highScore = this.universities[i].highScore;
-                const lowScore = this.universities[i].lowScore;                                    
+                for (let i = 0; i < this.sccessUniversity.length; i += 1) {
+                const name = this.sccessUniversity[i].name;
+                const province = this.sccessUniversity[i].province;
+                const degree = this.sccessUniversity[i].degree;
+                const major = this.sccessUniversity[i].major;
+                const highScore = this.sccessUniversity[i].highScore;
+                const lowScore = this.sccessUniversity[i].lowScore;                                    
                     
                         successMatch.push({
                             name: name,
@@ -285,13 +291,13 @@ export default {
             console.log(Cprovince)
             let successMatch = [];
             if(Cprovince == "全部"){
-                for (let i = 0; i < this.universities.length; i += 1) {
-                const name = this.universities[i].name;
-                const province = this.universities[i].province;
-                const degree = this.universities[i].degree;
-                const major = this.universities[i].major;
-                const highScore = this.universities[i].highScore;
-                const lowScore = this.universities[i].lowScore;                                    
+                for (let i = 0; i < this.sccessUniversity.length; i += 1) {
+                const name = this.sccessUniversity[i].name;
+                const province = this.sccessUniversity[i].province;
+                const degree = this.sccessUniversity[i].degree;
+                const major = this.sccessUniversity[i].major;
+                const highScore = this.sccessUniversity[i].highScore;
+                const lowScore = this.sccessUniversity[i].lowScore;                                    
                     
                         successMatch.push({
                             name: name,
@@ -303,13 +309,13 @@ export default {
                         });
                 }    
             }else{
-            for (let i = 0; i < this.universities.length; i += 1) {
-                const name = this.universities[i].name;
-                const province = this.universities[i].province;
-                const degree = this.universities[i].degree;
-                const major = this.universities[i].major;
-                const highScore = this.universities[i].highScore;
-                const lowScore = this.universities[i].lowScore;                                    
+            for (let i = 0; i < this.sccessUniversity.length; i += 1) {
+                const name = this.sccessUniversity[i].name;
+                const province = this.sccessUniversity[i].province;
+                const degree = this.sccessUniversity[i].degree;
+                const major = this.sccessUniversity[i].major;
+                const highScore = this.sccessUniversity[i].highScore;
+                const lowScore = this.sccessUniversity[i].lowScore;                                    
                     if (Cprovince == province) {
                         successMatch.push({
                             name: name,
@@ -322,7 +328,9 @@ export default {
                     }
                 }
             }    
-            this.sccessUniversity = successMatch;
+            this.PsccessUniversity = successMatch;
+            document.getElementById("resultDiv").hidden = "hidden";
+            document.getElementById("PDiv").hidden = null;
         },
         handleClick3(index){
             this.current3 = index
@@ -335,6 +343,48 @@ export default {
                 path: "/buttonHome"
             });
         },
+        
+        // positionPredict() {
+        //     let position = this.position;
+        //     let successMatch = [];
+        //     //要推荐专业时，数据库专业对应的分数为一个lst，嵌套for
+        //     if (position == ""){
+        //         this.$Message.warning("请先输入位次");
+        //     }else{
+        //         this.$Notice.open({
+        //         title: "推荐规则",
+        //         desc:
+        //             "1、本系统数据均由高校提供，具备参考价值；\n" +
+        //             "2、考生输入分数，系统将根据在当省招生的高校录取情况，推荐合适的高校\n" +
+        //             "3、本系统推荐的院校名单，仅供志愿参考。",
+        //         duration: 6
+        //     });
+        //         for (let i = 0; i < this.universities.length; i += 1) {
+        //             const name = this.universities[i].name;
+        //             const province = this.universities[i].province;
+        //             const degree = this.universities[i].degree;
+        //             const major = this.universities[i].major;
+        //             const highScore = this.universities[i].highScore;
+        //             const lowScore = this.universities[i].lowScore;
+                                        
+        //                 if (lowScore <= score) {
+        //                     successMatch.push({
+        //                         name: name,
+        //                         province: province,
+        //                         degree: degree,
+        //                         major: major,
+        //                         highScore: highScore,
+        //                         lowScore: lowScore,    
+        //                     });
+        //                 }
+        //             }
+                
+        //         this.sccessUniversity = successMatch;
+        //         document.getElementById("resultDiv").hidden = null;
+        //         document.getElementById("PDiv").hidden = "hidden";
+        //         }
+        //     } 
+        // },
         scorePredict() {
             let score = this.score;
             let successMatch = [];
@@ -372,6 +422,7 @@ export default {
                 
                 this.sccessUniversity = successMatch;
                 document.getElementById("resultDiv").hidden = null;
+                document.getElementById("PDiv").hidden = "hidden";
                 }
             } 
         }   
