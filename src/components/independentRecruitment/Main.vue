@@ -2,10 +2,10 @@
     <div class="layout main-wrap"  :class="{'layout-hide-text': hideMenuText}">
       <Menu mode="horizontal"  active-name="1">
             <div class="layout-logo" v-if="!hideMenuText"  :style="{width: !hideMenuText?'200px':''}" style="font-size:30px">
-              自主招生
+              爱简课
             </div>
             <div class="layout-logo" v-else   :style="{width: hideMenuText?'60px':''}">
-              自主招生
+              爱简课
             </div>
             <div class="layout-header" :style="{left: hideMenuText?'60px':'200px'}">
                 <Button type="text" @click="toggleClick">
@@ -143,7 +143,7 @@ export default {
   background: #213835;
 }
 .main-wrap .ivu-menu-vertical .ivu-menu-item:hover, .ivu-menu-vertical .ivu-menu-submenu-title:hover{
-  background: linear-gradient(-45deg, #13465C 0%, #284A6D 100%)!important;
+  background: linear-gradient(-45deg, rgb(19, 92, 68) 0%, #284A6D 100%)!important;
   opacity: .8;
 }
 .main-wrap .ivu-icon-ios-close-empty:before{

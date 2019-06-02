@@ -19,7 +19,8 @@
 			</Button>
 		</div>
 		
-		<div>
+		
+		<!-- <div> -->
 		<!-- 使用栅格构建布局 -->
 		<!-- 需要通过选择学校来动态改变内容，所以图片和所有连接不可以写死 -->
     <Row type="flex" justify="space-around" class="code-row-bg">
@@ -29,6 +30,7 @@
             <al-selector style="width:210px" level="0" @on-change="send" data-type="name" v-model="sname" searchable size="large"/>
           </div>
         </Col>
+      
         <Col span="9">
           <!-- 走马灯 -->
           <Carousel v-model="value2" 
@@ -41,22 +43,22 @@
               :arrow="setting.arrow">
               <CarouselItem>
                   <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../assets/independentRecruitmentPolicy/1.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cbb2b40a326650.jpg" >
                   </div>
               </CarouselItem>
               <CarouselItem>
                  <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../assets/independentRecruitmentPolicy/2.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cbf3863e468321.jpg" >
                   </div>
               </CarouselItem>
               <CarouselItem>
                   <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../assets/independentRecruitmentPolicy/3.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cc03ce19b78164.jpg" >
                   </div>
               </CarouselItem>
               <CarouselItem>
                   <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../assets/independentRecruitmentPolicy/4.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cc1313e6137047.jpg" >
                   </div>
               </CarouselItem>
           </Carousel>
@@ -107,8 +109,10 @@
             <p><a class="link-a" @click="guideText">{{title2}}</a></p>
           </Card>
         </Col>
+      
     </Row>
-	</div>
+    
+	<!-- </div> -->
 
   </div>
 </template>
@@ -142,7 +146,7 @@ export default {
     send(){
       this.$http({
           method:'post',
-          url:"http://118.202.11.253:8085/newEntrancePolicy/getProvince/getNewEntrancePolicy",
+          url:"https://fantuan.wxhulu.com:8086/newEntrancePolicy/getProvince/getNewEntrancePolicy",
           data:{
             "province":this.sname[0]
           }
@@ -172,6 +176,12 @@ export default {
 </script>
 
 <style>
+.PCard{
+    background-color: rgb(77, 182, 164,0.5);
+}
+.Card{
+    background-color: rgb(77, 182, 164,0.2)
+}
 .breadcrumb {
   padding: 0.65rem;
   background-color: aliceblue;

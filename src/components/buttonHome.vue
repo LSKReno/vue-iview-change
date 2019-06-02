@@ -3,30 +3,15 @@
 </style>
 <template>
     <div>
-        <Row>
-            <Col span="20">
-                <h1>{{ msg }}</h1>
-            </Col>
-            <Col span="1">
-                <i-button
-                    type="ghost"
-                    icon="monitor"
-                    class="screenfull-button"
-                    @click="screenFull"
-                >全屏</i-button>
-            </Col>
-            <Col span="3">
-                <!-- 登录button -->
-                <i-button type="ghost" class="login-button" @click="loginModal">登录</i-button>
-            </Col>
-        </Row>
-        <!-- <br> -->
+        <div class="loginDiv">
+            <i-button type="ghost" icon="monitor" class="screenfull-button" @click="screenFull">全屏</i-button>
+            <!-- 登录button -->
+            <i-button type="ghost" class="login-button" @click="loginModal">登录</i-button>
+        </div>
+            
         <!-- 登录Modal -->
         <Modal class="modal loginModal_bg" v-model="login_modal" width="400">
-            <p
-                slot="header"
-                style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;"
-            >
+            <p slot="header" style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;">
                 <span class>欢迎登录</span>
             </p>
             <div>
@@ -66,86 +51,57 @@
                 >登录</i-button>
             </div>
         </Modal>
-
-        <div class="allButtons" style="text-align:center;margin:0 auto;">
-            <Row>
-                <Col span="9">
-                    <!-- 自主招生是page1 -->
-                    <i-button
-                        id="bt1"
-                        @click="toIndependentRecruitment"
-                        icon="paper-airplane"
-                        type="primary"
-                        class="students"
-                    >自主招生</i-button>
-                </Col>
-                <Col span="11">
-                    <!-- 志愿填报（专业指导）是page4 -->
-                    <i-button
-                        @click="toVoluntaryReporting"
-                        type="primary"
-                        icon="clipboard"
-                        class="voluntary"
-                    >
-                    专业选择指导
+        <br><br><br>
+        <div class="PageDiv">
+            <h1 class="h1Font">{{ msg }}</h1>
+            <br><br><br>
+            <div class="buttonDiv">
+                
+                <div class="left-part">
+                    <div>
+                        <div class="left1">
+                        <!-- 自主招生是page1 -->
+                            <i-button id="bt1" @click="toIndependentRecruitment" icon="paper-airplane" type="primary" class="students">自主招生</i-button>
                         
-                    </i-button>
-                </Col>
-                <Col span="4">
+                            <div>
+                                <!-- 政策解读是page2 -->
+                                <div class="left1-1">
+                                    <i-button id="bt2" @click="toPolicy" type="primary" icon="android-document" class="policy">政策解读</i-button>
+                                </div>
+                                <!-- 名校直通车是page3 -->
+                                <div class="right1-1">
+                                    <i-button @click="toEliteSchool" type="primary" icon="key" class="direct">名校直通车</i-button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 左上角左右部分的分割！！！！！！！！！！！！！！！ -->
+                        <div class="right1">
+                            <!-- 志愿填报（专业指导）是page4 -->
+                            <i-button @click="toVoluntaryReporting" type="primary" icon="clipboard" class="voluntary">专业指导</i-button>
+                        </div>
+                    </div>
+                    <!-- 左下角部分！！！！！！！！ -->
+                    <div>
+                        <div class="left2">
+                            <i-button @click="toEnrollmentGuide" icon="document-text" type="primary" class="regulation">招生简章</i-button>
+                        </div>
+                        <div class="right2">
+                        <i-button @click="toProfessionTest" icon="ios-paw" type="primary" class="test">职业测试</i-button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 左右部分分割！！！！！！！ ！！-->
+                <div class="right-part">
                     <!-- 查看成绩是page7 -->
-                    <i-button
-                        @click="toCheckScores"
-                        type="primary"
-                        icon="ios-search"
-                        class="score"
-                    >查看成绩</i-button>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col span="7">
-                    <!-- 政策解读是page2 -->
-                    <i-button
-                        id="bt2"
-                        @click="toPolicy"
-                        type="primary"
-                        icon="android-document"
-                        class="policy"
-                    >政策解读</i-button>
-                </Col>
-                <Col span="7">
-                    <!-- 名校直通车是page3 -->
-                    <i-button @click="toEliteSchool" type="primary" icon="key" class="direct">名校直通车</i-button>
-                </Col>
-                <Col span="10">
-                    <i-button
-                        @click="toEnrollmentGuide"
-                        icon="document-text"
-                        type="primary"
-                        class="regulation"
-                    >招生简章</i-button>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col span="10">
-                    <i-button
-                        @click="toProfessionTest"
-                        icon="ios-paw"
-                        type="primary"
-                        class="test"
-                    >职业测试</i-button>
-                </Col>
-                <Col span="14">
-                    <!-- 专业详解是page8 -->
-                    <i-button
-                        @click="toMajorExplanation"
-                        type="primary"
-                        icon="document-text"
-                        class="major"
-                    >专业详解</i-button>
-                </Col>
-            </Row>
+                    <div>
+                        <i-button @click="toCheckScores" type="primary" icon="ios-search" class="score">查看成绩</i-button>    
+                    </div>
+                        <!-- 专业详解是page8 -->
+                    <div>
+                        <i-button @click="toMajorExplanation" type="primary" icon="document-text" class="major">专业详解</i-button>
+                    </div>
+                </div>    
+            </div>
         </div>
 
         <Button class="font" type="text" @click="signOut">
@@ -162,7 +118,7 @@ export default {
     name: "buttonHome",
     data() {
         return {
-            msg: "中心服务自助终端",
+            msg: "简课服务中心自助终端",
             login_modal: false,
             form: {
                 userName: "",
@@ -200,7 +156,7 @@ export default {
         handleSubmit() {
             this.$http({
                 method:'post',
-                url:"http://118.202.11.253:8085/home/login",
+                url:"https://fantuan.wxhulu.com:8086/home/login",
                 data:{
                     "userName":this.form.userName,
                     "password":this.form.password
@@ -291,6 +247,47 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.loginDiv{
+    float: right;
+}
+.h1Font{
+    color: #f0f8ff;
+    font-size:2.5rem;
+}
+.PageDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+.buttonDiv{
+    width: 71.9rem;
+}
+.left-part{
+  float: left;
+}
+.left1{
+  float:left;
+}
+.right1{
+  float:right;
+}
+.left1-1{
+  float:left;
+}
+.right1-1{
+  float:right;
+}
+.left2{
+  float:left;
+}
+.right2{
+  float:right;
+}
+.right-part{
+  float:right;
+}
+
 .screenfull-button {
     opacity: 0;
 }
@@ -305,75 +302,75 @@ export default {
 .font {
     color: #f0f8ff;
 }
-.allButtons {
+/* .allButtons {
     padding: 2rem;
     padding-left: 5rem;
     padding-right: 5rem;
     text-align: center;
     margin: 0 auto;
-}
+} */
 .students {
     font-size: 250%;
-    border-radius: 0.618rem;
-    width: 28.7rem;
-    height: 10rem;
+    border-radius: 0.3rem;
+    width: 37.5rem;
+    height: 9.375rem;
     border: none;
     background-color: rgb(99, 146, 235);
     color: #f0f8ff;
 }
 .voluntary {
     background-color: rgb(51, 218, 162);
-    border-radius: 0.618rem;
-    width: 35rem;
-    height: 10rem;
+    border-radius: 0.3rem;
+    width: 15.625rem;
+    height: 25rem;
     font-size: 250%;
     color: #f0f8ff;
 }
 .score {
     font-size: 250%;
-    width: 13rem;
-    height: 10rem;
-    border-radius: 0.618rem;
+    width: 18.75rem;
+    height: 25rem;
+    border-radius: 0.3rem;
     background-color: #4d438a;
     color: #f0f8ff;
 }
 .policy {
     font-size: 250%;
-    width: 22.4rem;
-    height: 15rem;
-    border-radius: 0.618rem;
+    width: 18.75rem;
+    height: 15.625rem;
+    border-radius: 0.3rem;
     background-color: #2e2c2c;
     color: #f0f8ff;
 }
 .direct {
     font-size: 250%;
-    width: 22.2rem;
-    height: 15rem;
-    border-radius: 0.618rem;
+    width: 18.75rem;
+    height: 15.625rem;
+    border-radius: 0.3rem;
     background-color: rgb(241, 123, 123);
     color: #f0f8ff;
 }
 .regulation {
     font-size: 250%;
-    width: 32rem;
-    height: 15rem;
-    border-radius: 0.618rem;
+    width: 18.75rem;
+    height: 12.5rem;
+    border-radius: 0.3rem;
     background-color: #f0622f;
     color: #f0f8ff;
 }
 .test {
     font-size: 250%;
-    width: 31.8rem;
+    width: 34.375rem;
     height: 12.5rem;
-    border-radius: 0.618rem;
+    border-radius: 0.3rem;
     background-color: rgb(247, 139, 193);
     color: #f0f8ff;
 }
 .major {
     font-size: 250%;
-    width: 44.6rem;
+    width: 18.75rem;
     height: 12.5rem;
-    border-radius: 0.618rem;
+    border-radius: 0.3rem;
     background-color: #2d2d8b;
     color: #f0f8ff;
 }

@@ -65,77 +65,55 @@
             </div>
         </Modal>
 
-		<br><br>
-		<i-table :content="self" height="250" class="tabel" size="small" :columns="columns1" :data="tableData"></i-table>
-        
+		<br><br><br>
+		<div class="cdiv">
+        <div class="PageDiv1">
         <div class="block">
-            <div class="competitions-type oneone">
-                自然科学类
-
-                <div class="competitions-type2">
-                    （1）数学类
-                </div>
+            <div class="competitions-type one">
+                理科类竞赛
                 <Cascader id="math" class="cascader" :data="math" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
+            </div>    
                 
-                <div class="competitions-type2">
-                    （2）物理类
-                </div>
-                <Cascader id="physics" class="cascader" :data="physics" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
-                
-                <div class="competitions-type2">
-                    （3）生物类
-                </div>
-                <Cascader id="biology" class="cascader" :data="biology" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
-                
-                <div class="competitions-type2">
-                    （4）化学类
-                </div>
-                <Cascader id="chemistry" class="cascader" :data="chemistry" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
+            <div class="competitions-type one">
+                科创类竞赛
+                <Cascader id="technology" class="cascader" :data="technology" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
             </div>
 
-            <div class="competitions-type onetwo">
-                人文类
-                <div class="competitions-type2">
-                    （1）语文类
-                </div>
-                <Cascader  id="language" class="cascader" :data="language" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
-                <div class="competitions-type2">
-                    （2）作文类
-                </div>
-                <Cascader id="composition" class="cascader" :data="composition" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
+            <div class="competitions-type one">
+                国际类竞赛
+                <Cascader id="international" class="cascader" :data="international" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
             </div>
 
-            <div class="competitions-type twoone">
-                外语类
-                <div class="competitions-type2">
-                    （1）英语类
-                </div>
+            <div class="competitions-type one">
+                其他
+                <Cascader  id="other" class="cascader" :data="other" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
+            </div>
+
+            <div class="competitions-type one">
+                英语类竞赛
                 <Cascader  id="english" class="cascader" :data="english" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
-                <div class="competitions-type2">
-                    （2）日语类
-                </div>
-                <Cascader id="japanese" class="cascader" :data="japanese" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
             </div>
 
-            <div class="competitions-type twotwo">
-                信息学类
-                <div class="competitions-type2">
-                    （1）计算机科学与软件类
-                </div>
-                  <Cascader  id="programe" class="cascader" :data="programe" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
+            <div class="competitions-type one">
+                语文作文类竞赛
+                <Cascader id="chinese" class="cascader" :data="chinese" placeholder="请选择比赛及所获奖项" trigger="hover" @on-change="changeToTable" change-on-select></Cascader>
             </div>
+
+        </div>
+        <div>
+            <br><br><br><br>
+            <i-table :content="self" class="tabel" size="default" :columns="columns1" :data="tableData"></i-table>
+        </div>
+        </div>
         </div>
 
         <Modal class="modal" v-model="recommendedModal" width="800">
-            <p slot="header"
-                style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;">院校推荐</p>
-            <!-- <p>东北大学</p>
-            <p>浙江大学</p>
-            <p>南方科技大学</p> -->
-
-            <p>华东师范大学</p>
-            <p>北京师范大学</p>
-            <p>上海戏剧学院</p>
+            <p slot="header" style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;">院校推荐</p>
+            <p class="modal-font">根据你的比赛经历，为你推荐的院校和专业为：</p>
+            <p class="modal-font">北京大学：&nbsp;理科试验班&nbsp;计算机类</p>
+            <p class="modal-font">清华大学：&nbsp;电子信息类&nbsp;经济金融与管理类</p>
+            <p class="modal-font">北京语言大学：&nbsp;英语&nbsp;翻译</p>
+            <p class="modal-font">中国人民大学：&nbsp;人文科学试验班&nbsp;汉语言文学</p>
 
 
 
@@ -152,9 +130,11 @@
         
         
 
-		<br><br>
-      	<i-button class="universityRecommand-queding-button font" type="ghost" shape="circle" @click="recommendUniversity">确定</i-button>
-      	<i-button class="universityRecommand-reset-button font" type="ghost" shape="circle" @click="reset" >重置</i-button>
+		<br><br><br>
+        <div>
+      	    <i-button class="universityRecommand-queding-button" type="ghost" shape="circle" @click="recommendUniversity">确定</i-button>
+      	    <i-button class="universityRecommand-reset-button" type="ghost" shape="circle" @click="reset" >重置</i-button>
+        </div>
 	</div>
 </template>
 
@@ -211,19 +191,10 @@
                         }
                     }
                 ],
-                tableData: [
-                    // {
-                    //     name: 'XX作文大赛',
-                    //     award: '一等奖',
-                    // },
-                    // {
-                    //     name: 'XX大赛',
-                    //     award: '特等奖',
-                    // }
-				],
+                tableData: [],
 				math: [{
-                    value: 'XX数学大赛',
-                    label: 'XX数学大赛',
+                    value: '全国中学生物理奥林匹克竞赛',
+                    label: '全国中学生物理奥林匹克竞赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -243,8 +214,161 @@
                         }
                     ]
                 },{
-                    value: 'OO数学大赛',
-                    label: 'OO数学大赛',
+                    value: '全国中学生数学奥林匹克竞赛',
+                    label: '全国中学生数学奥林匹克竞赛',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },
+                {
+                    value: '全国中学生化学奥林匹克竞赛',
+                    label: '全国中学生化学奥林匹克竞赛',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },
+                {
+                    value: '全国中学生生物奥林匹克竞赛',
+                    label: '全国中学生生物奥林匹克竞赛',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },
+                {
+                    value: '全国中学生信息学奥林匹克竞赛',
+                    label: '全国中学生信息学奥林匹克竞赛',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },
+                ],
+                
+                technology: [{
+                    value: '全国青少年科技创新大赛',
+                    label: '全国青少年科技创新大赛',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },{
+                    value: '“明天小小科学家”奖励活动',
+                    label: '“明天小小科学家”奖励活动',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },{
+                    value: '全国中小学电脑制作活动',
+                    label: '全国中小学电脑制作活动',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },{
+                    value: '中国青少年机器人大赛',
+                    label: '中国青少年机器人大赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -265,9 +389,9 @@
                     ]
                 }
                 ],
-                physics: [{
-                    value: 'XX物理大赛',
-                    label: 'XX物理大赛',
+                international: [{
+                    value: '国际科学与工程大奖赛',
+                    label: '国际科学与工程大奖赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -287,8 +411,8 @@
                         }
                     ]
                 },{
-                    value: 'GG物理大赛',
-                    label: 'GG物理大赛',
+                    value: '国际环境科研项目奥林匹克竞赛',
+                    label: '国际环境科研项目奥林匹克竞赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -309,9 +433,10 @@
                     ]
                 }
                 ],
-                biology: [{
-                    value: 'XX生物大赛',
-                    label: 'XX生物大赛',
+                
+                chinese: [{
+                    value: '全国新概念作文大赛',
+                    label: '全国新概念作文大赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -331,31 +456,8 @@
                         }
                     ]
                 },{
-                    value: 'OO生物大赛',
-                    label: 'OO生物大赛',
-                    children: [
-                        {
-                            value: 'specialPlace',
-                            label: '特等奖'
-                        },
-                        {
-                            value: 'firstPlace',
-                            label: '一等奖'
-                        },
-                        {
-                            value: 'secondPlace',
-                            label: '二等奖'
-                        },
-                        {
-                            value: 'thirdPlace',
-                            label: '三等奖'
-                        }
-                    ]
-                }
-                ],
-                chemistry: [{
-                    value: 'XX化学大赛',
-                    label: 'XX化学大赛',
+                    value: '“语文报杯” 全国中学生作文大赛',
+                    label: '“语文报杯” 全国中学生作文大赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -375,75 +477,8 @@
                         }
                     ]
                 },{
-                    value: 'GG化学大赛',
-                    label: 'GG化学大赛',
-                    children: [
-                        {
-                            value: 'specialPlace',
-                            label: '特等奖'
-                        },
-                        {
-                            value: 'firstPlace',
-                            label: '一等奖'
-                        },
-                        {
-                            value: 'secondPlace',
-                            label: '二等奖'
-                        },
-                        {
-                            value: 'thirdPlace',
-                            label: '三等奖'
-                        }
-                    ]
-                }
-                ],
-                language: [{
-                    value: 'XX语文知识大赛',
-                    label: 'XX语文知识大赛',
-                    children: [
-                        {
-                            value: 'specialPlace',
-                            label: '特等奖'
-                        },
-                        {
-                            value: 'firstPlace',
-                            label: '一等奖'
-                        },
-                        {
-                            value: 'secondPlace',
-                            label: '二等奖'
-                        },
-                        {
-                            value: 'thirdPlace',
-                            label: '三等奖'
-                        }
-                    ]
-                }
-                ],
-                composition: [{
-                    value: 'XX作文大赛',
-                    label: 'XX作文大赛',
-                    children: [
-                        {
-                            value: 'specialPlace',
-                            label: '特等奖'
-                        },
-                        {
-                            value: 'firstPlace',
-                            label: '一等奖'
-                        },
-                        {
-                            value: 'secondPlace',
-                            label: '二等奖'
-                        },
-                        {
-                            value: 'thirdPlace',
-                            label: '三等奖'
-                        }
-                    ]
-                },{
-                    value: '新概念作文大赛',
-                    label: '新概念作文大赛',
+                    value: '“叶圣陶杯”中学生作文大赛',
+                    label: '“叶圣陶杯”中学生作文大赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -465,8 +500,8 @@
                 }
                 ],
                 english: [{
-                    value: 'XX英语竞赛',
-                    label: 'XX英语竞赛',
+                    value: '全国中学生英语能力竞赛',
+                    label: '全国中学生英语能力竞赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -485,11 +520,54 @@
                             label: '三等奖'
                         }
                     ]
-                }
+                },{
+                    value: '全国创新英语大赛',
+                    label: '全国创新英语大赛',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },{
+                    value: '21世纪杯英语演讲比赛',
+                    label: '21世纪杯英语演讲比赛',
+                    children: [
+                        {
+                            value: 'specialPlace',
+                            label: '特等奖'
+                        },
+                        {
+                            value: 'firstPlace',
+                            label: '一等奖'
+                        },
+                        {
+                            value: 'secondPlace',
+                            label: '二等奖'
+                        },
+                        {
+                            value: 'thirdPlace',
+                            label: '三等奖'
+                        }
+                    ]
+                },
                 ],
-                japanese: [{
-                    value: 'XX日语竞赛',
-                    label: 'XX日语竞赛',
+                
+                other: [{
+                    value: '全国大中学生海洋知识竞赛',
+                    label: '全国大中学生海洋知识竞赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -508,11 +586,9 @@
                             label: '三等奖'
                         }
                     ]
-                }
-                ],
-                programe: [{
-                    value: 'XX大数据竞赛',
-                    label: 'XX大数据竞赛',
+                },{
+                    value: '全国青少年航空航天模型锦标赛',
+                    label: '全国青少年航空航天模型锦标赛',
                     children: [
                         {
                             value: 'specialPlace',
@@ -531,7 +607,7 @@
                             label: '三等奖'
                         }
                     ]
-                }
+                },
                 ]
 
             }
@@ -578,6 +654,24 @@
 </script>
 
 <style>
+.modal-font{
+    font-size: 1rem;
+}
+.cdiv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+.PageDiv1{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    color: rgb(77, 182, 164,0.5);
+}
 .school {
     width: 100%;
     margin-top: 60px;
@@ -618,55 +712,54 @@
 
 
 .cascader{
-  width: 14.375rem
+  width: 14.375rem;
+  
   /* width: 230px */
 }
 .tabel{
-	float: right;
-	width: 21.875rem;
+	float: left;
+	width: 35rem;
+    height:24rem;
 	/* width: 350px; */
 }
 .competitions-type{
-	font-size: 1.25rem;
-	color: rgb(155, 130, 130)
+	font-size: 1.50rem;
+	color: white;
 }
 .competitions-type2{
 	font-size: 0.75rem;
 	color: aliceblue
 }
 .font{
+
     color: aliceblue
 }
 .universityRecommand-queding-button{
     position: fixed;
-    margin-left: 28.125rem;
-    width: 6.25rem
+    margin-left: 65rem;
+    border-radius: 0.3rem;
+    width: 7rem;
+    font-size: 1rem;
+    background-color:rgb(233, 175, 17);
+    border: none;
+    color: white;
 }
 .universityRecommand-reset-button{
     position: fixed;
-    margin-left: 37.5rem;
-    width: 6.25rem
+    margin-left: 76.5rem;
+    border-radius: 0.3rem;
+    width: 7rem;
+    font-size: 1rem;
+    background-color:rgb(233, 175, 17);
+    border: none;
+    color: white;
 }
 .block{
-    width:37.5rem;
+    float: left;
+    width:30rem;
     height:22.5rem;
-    padding:0;
-    margin:0;
 }
-.oneone{
+.one{
     width: 18.75rem;
-    float: left;
-}
-.onetwo{
-    width: 18.75rem;
-    float: left;
-}
-.twoone{
-    width: 18.75rem;
-    float: left;
-}
-.twotwo{
-    width: 18.75rem;
-    float: left;
 }
 </style>

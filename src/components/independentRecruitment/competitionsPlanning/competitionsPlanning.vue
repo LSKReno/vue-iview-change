@@ -76,6 +76,8 @@
                 >我知道啦</i-button>
             </div>
         </Modal>
+        <br><br><br><br>
+        <h1 style="color:white">欢迎来到量身赛事规划,选择心目中理想的大学，获得推荐参加的竞赛~</h1>
         <div class="font">
             <br>省份、学校：
             <Cascader
@@ -96,21 +98,31 @@
                 change-on-select
             ></Cascader>
         </div>
+        
         <div>
-            <br>
-            <br>
-            <i-button class="font" type="ghost" shape="circle">优惠政策</i-button>
+            
+            <i-button class="competitionsPlanning-queding-button font" type="ghost" shape="circle">优惠政策</i-button>
+            <i-button class="competitionsPlanning-reset-button font" type="ghost" shape="circle" @click="recommendUniversity">确定</i-button>
         </div>
-        <div>
-            <br>
-            <br>
-            <i-button
-                class="competitionsPlanning-queding-button font"
-                type="ghost"
-                shape="circle"
-            >确定</i-button>
-            <i-button class="competitionsPlanning-reset-button font" type="ghost" shape="circle">重置</i-button>
-        </div>
+        <Modal class="modal" v-model="recommendedModal" width="800">
+            <p slot="header" style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;">赛事规划</p>
+            <p class="modal-font">根据你所选院校，为你推荐的比赛如下：</p>
+            <p class="modal-font">国际科学与工程大奖赛</p>
+            <p class="modal-font">全国青少年科技创新大赛</p>
+            <p class="modal-font">全国中学生信息学奥林匹克竞赛</p>
+            <p class="modal-font">全国中学生数学奥林匹克竞赛</p>
+
+
+
+            <div slot="footer">
+                <i-button
+                    type="circle"
+                    size="large"
+                    style="width:100%;background-color:#ff9999;color:white;"
+                    @click="recommendedModal=false"
+                >我知道啦</i-button>
+            </div>
+        </Modal>
     </div>
 </template>
 
@@ -118,6 +130,7 @@
 export default {
     data() {
         return {
+            recommendedModal:false,
             universityModal:false,
             searchedUniversity: "",
             competitionsPlanningModal: false,
@@ -170,7 +183,7 @@ export default {
                         },
                         {
                             value: "walawala",
-                            label: "哇啦哇啦专业"
+                            label: "金融类"
                         }
                     ]
                 }
@@ -178,6 +191,9 @@ export default {
         };
     },
     methods: {
+        recommendUniversity(){
+                this.recommendedModal = true
+            },
         searchUniversity() {
             if (this.searchedUniversity == "") {
                 this.$Message.info("亲爱的, 请输入院校名称关键字");
@@ -247,24 +263,29 @@ export default {
     width: 20%;
 }
 .font {
+    font-size: 1rem;
     color: aliceblue;
 }
 .competitionsPlanning-queding-button {
     position: fixed;
     margin-bottom: 1.875rem;
     margin-left: 28.125rem;
-    width: 6.25rem;
-    /* margin-bottom: 30px;
-    margin-left:450px;
-    width: 100px */
+    border-radius: 0.3rem;
+    width: 7rem;
+    font-size: 1rem;
+    background-color:rgb(233, 175, 17);
+    border: none;
+    color: white;
 }
 .competitionsPlanning-reset-button {
     position: fixed;
     margin-bottom: 1.875rem;
     margin-left: 37.5rem;
-    width: 6.25rem;
-    /* margin-bottom: 30px;
-    margin-left: 600px;
-    width: 100px */
+    border-radius: 0.3rem;
+    width: 7rem;
+    font-size: 1rem;
+    background-color:rgb(233, 175, 17);
+    border: none;
+    color: white;
 }
 </style>

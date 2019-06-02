@@ -66,7 +66,9 @@ export default {
 .layout-breadcrumb{
     padding: 10px 15px;
     .main-tag-dot{
-      background: linear-gradient(-45deg, #13465C 0%, #284A6D 100%)!important;
+	  font-size: 0.9rem;
+	  
+      background: linear-gradient(-45deg, rgb(2, 192, 160) 0%, rgb(77, 182, 164) 100%)!important;
       color: #fff!important;
       border: none!important;
     }

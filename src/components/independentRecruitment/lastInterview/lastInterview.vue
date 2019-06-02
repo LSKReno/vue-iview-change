@@ -2,6 +2,7 @@
      
   <div>
     <!-- 使用栅格构建布局 -->
+    <Card :bordered="false" class="PCard">
     <Row :gutter="64">
         <Col span="10">
           <!-- 走马灯 -->
@@ -15,36 +16,38 @@
               :arrow="setting.arrow">
               <CarouselItem>
                   <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../../assets/independentRecruitmentPolicy/1.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3ca4099da696306.jpg" >
                   </div>
               </CarouselItem>
+              
               <CarouselItem>
                  <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../../assets/independentRecruitmentPolicy/2.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3ca8734d3722160.jpg" >
                   </div>
               </CarouselItem>
               <CarouselItem>
                   <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../../assets/independentRecruitmentPolicy/3.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3ca8182dae67116.jpg" >
                   </div>
               </CarouselItem>
               <CarouselItem>
                   <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="../../../assets/independentRecruitmentPolicy/4.jpg" >
+                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3caef723d839032.jpg" >
                   </div>
               </CarouselItem>
           </Carousel>
         </Col>
       
         <Col span="10">
-          <Card>
-            <p slot="title"></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
+          <Card :bordered="false" class="Card">
+            <p slot="title" style="font-size:1.25rem">{{title3}}</p>
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;2019自主招生新规出台！名额缩减，学科竞赛或成唯一条件.....</a></p>
+            <hr>
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;东北大学2019自主招生初审名单！共553人，95%考生无学科竞赛省一奖</a></p>
+            <hr>
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;夏季高考之前的自主招生与单独招生差异很大，不了解后果很严重</a></p>
+            
+            
           </Card>
         </Col>
     </Row>
@@ -52,57 +55,40 @@
     <br>
     <Row :gutter="64">
         <Col span="10">
-          <Card>
-            <p slot="title"></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
+          <Card :bordered="false" class="Card">
+            <p slot="title" style="font-size:1.25rem">{{title1}}</p>
+            <p><a class="link-a" @click="guideText">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主招生又称自主选拔，是由高校拿出一定比例的招生名额，在高考的基础上通过院校的综合评价体系的选拔。最终获得拟录取资格的考生在高考成绩达到院校标准时，可在高考录取中享有一定的投档及专业录取优惠。在此说明，自主招生是正常高考的辅助手段，是对高考制度的重要补充，并不是高考的另外招生。</a></p>
+            
           </Card>
         </Col>
         <Col span="10">
-          <Card>
-            <p slot="title"></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
+          <Card :bordered="false" class="Card">
+            <p slot="title" style="font-size:1.25rem">{{title2}}</p>
+            <p><a class="link-a" @click="guideText">>参加自主招生的作用</a></p>
+            <p><a class="link-a" @click="guideText">>参加自主招生的条件</a></p>
+            <p><a class="link-a" @click="guideText">>什么样的学生适合参加自主招生</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生报考流程</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生的优惠政策</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生详细时间</a></p>
           </Card>
         </Col>
     </Row>
+    </Card>
     <Modal class="modal" v-model="modal" width="1000" @on-ok="ok" @on-cancel="cancel">
       <p>{{title1}}</p>
-
-       <div slot="footer">
-                <i-button
-                    type="circle"
-                    size="large"
-                    style="width:100%;background-color:#ff9999;color:white;"
-                    @click="modal=false"
-                >我知道啦</i-button>
-      </div>
     </Modal>
+
 	</div>
-  
+
 </template>
-<style>
-  .link-a{
-    font-size: 25px;
-    color: rgba(228, 217, 217, 0.945);
-  }
-</style>
 
 <script>
   export default {
     data () {
       return {
-        title1: '复试高分宝典',
-        title2: '复试高分宝典',
-        title3: '复试高分宝典',
+        title1: '自招小讲堂',
+        title2: '自主招生详情',
+        title3: '最新资讯',
         value2: 0,
         modal: false,
         setting: {
@@ -123,3 +109,18 @@
     }
   }
 </script>
+<style>
+  .PCard{
+    background-color: rgb(77, 182, 164,0.5);
+  }
+  .Card{
+    background-color: rgb(77, 182, 164,0.2)
+  }
+  a:hover{
+   color:rgb(218, 211, 123);
+  }
+  .link-a{
+    font-size: 1.25rem;
+    color: rgba(228, 217, 217, 0.945);
+  }
+</style>
