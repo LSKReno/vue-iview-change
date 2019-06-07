@@ -1,177 +1,188 @@
 <template>
-    <div>
-        <div class="font">
-            <div class="breadcrumb">
-                <Breadcrumb separator=">">
-                    <Breadcrumb-item class="font" href="/buttonHome">
-                        <Icon type="ios-home-outline"></Icon>首页
-                    </Breadcrumb-item>
-                    <Breadcrumb-item>
-                        <Icon type="ios-search"></Icon>招生简章
-                    </Breadcrumb-item>
-                </Breadcrumb>
-            </div>
-            <br>
-            <br>
-
-            <div>
-                <Button class="back-button" type="text" @click="backToButtonHome">
-                    <Icon type="android-arrow-back" size="32" color="#fff"></Icon>
-                </Button>
-            </div>
-        </div>
+    <div class="font">
+        <!-- <div class="breadcrumb"><Breadcrumb separator=">"><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>政策解读</Breadcrumb-item></Breadcrumb></div> -->
+        <br>
+        <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
+        <br>
+        <br>
 
         <div>
-            <!-- 使用栅格构建布局 -->
-            <!-- 需要通过选择学校来动态改变内容，所以图片和所有连接不可以写死 -->
-            <Row type="flex" justify="space-around" class="code-row-bg">
-                <Col span="5">
-                    <div class="button-tab">
-                        <i-input icon="ios-search-strong" placeholder="搜索高校" style="width: 270px"></i-input>
-                        <i-button class="font" type="ghost" shape="circle" icon="ios-search"></i-button>
-                        <div class="font">
-                            <br>省份、学校：
-                            <Cascader
-                                :data="data1"
-                                trigger="hover"
-                                placeholder="请选择省份、学校"
-                                class="cascader"
-                                style="width: 300px"
-                                change-on-select
-                            ></Cascader>
-                        </div>
-                    </div>
-                </Col>
-                <Col span="9">
-                    <!-- 走马灯 -->
-                    <Carousel
-                        v-model="value2"
-                        :height="setting.height"
-                        :autoplay="setting.autoplay"
-                        :autoplay-speed="setting.autoplaySpeed"
-                        :dots="setting.dots"
-                        :radius-dot="setting.radiusDot"
-                        :trigger="setting.trigger"
-                        :arrow="setting.arrow"
-                    >
-                        <CarouselItem>
-                            <div style="display:flex;align-items:center;justify-content:center;">
-                                <img
-                                    style="width:100%;height:auto;"
-                                    src="../../assets/independentRecruitmentPolicy/1.jpg"
-                                >
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem>
-                            <div style="display:flex;align-items:center;justify-content:center;">
-                                <img
-                                    style="width:100%;height:auto;"
-                                    src="../../assets/independentRecruitmentPolicy/2.jpg"
-                                >
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem>
-                            <div style="display:flex;align-items:center;justify-content:center;">
-                                <img
-                                    style="width:100%;height:auto;"
-                                    src="../../assets/independentRecruitmentPolicy/3.jpg"
-                                >
-                            </div>
-                        </CarouselItem>
-                        <CarouselItem>
-                            <div style="display:flex;align-items:center;justify-content:center;">
-                                <img
-                                    style="width:100%;height:auto;"
-                                    src="../../assets/independentRecruitmentPolicy/4.jpg"
-                                >
-                            </div>
-                        </CarouselItem>
-                    </Carousel>
-                </Col>
-
-                <Col span="8">
-                    <Card>
-                        <p slot="title"></p>
-                        <p>
-                            <a id="R1" class="link-a" @click="guideText($event)">{{Rtitle1}}</a>
-                        </p>
-                        <p>
-                            <a id="R2" class="link-a" @click="guideText($event)">{{Rtitle2}}</a>
-                        </p>
-                        <p>
-                            <a id="R3" class="link-a" @click="guideText($event)">{{Rtitle3}}</a>
-                        </p>
-                    </Card>
-                </Col>
-            </Row>
-            <br>
-            <br>
-            <Row type="flex" justify="space-around" class="code-row-bg">
-                <Col span="5">
-                    <br>
-                </Col>
-                <Col span="9">
-                    <Card>
-                        <p slot="title"></p>
-                        <p>
-                            <a id="L1" class="link-a" @click="guideText">{{Ltitle1}}</a>
-                        </p>
-                        <p>
-                            <a id="L2" class="link-a" @click="guideText">{{Ltitle2}}</a>
-                        </p>
-                        <p>
-                            <a id="L3" class="link-a" @click="guideText">{{Ltitle3}}</a>
-                        </p>
-                    </Card>
-                </Col>
-                <Col span="8">
-                    <Card>
-                        <p slot="title"></p>
-                        <p>
-                            <a id="R4" class="link-a" @click="guideText">{{Rtitle4}}</a>
-                        </p>
-                        <p>
-                            <a id="R5" class="link-a" @click="guideText">{{Rtitle5}}</a>
-                        </p>
-                        <p>
-                            <a id="R6" class="link-a" @click="guideText">{{Rtitle6}}</a>
-                        </p>
-                    </Card>
-                </Col>
-            </Row>
+            <Button class="back-button" type="text" @click="backToButtonHome">
+                <Icon type="android-arrow-back" size="32" color="#fff"></Icon>
+            </Button>
         </div>
 
-        <Modal class="modal" v-model="modal" width="1000" @on-ok="ok" @on-cancel="cancel">
-            <p style="font-size:1.5rem;">{{postTitle}}</p>
-            <div>
-                <p>{{postContent}}</p>
+        <div class="flex-div">
+            <div class="selector-div">
+                <!-- <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" /> 用on-change也可以实现-->
+                <!-- <al-selector style="width:210px;" level="0" @on-change="send" data-type="name" v-model="sname" searchable size="large"/> -->
+                <div class="button-tab">
+                    <i-input icon="ios-search-strong" placeholder="搜索高校" style="width: 270px"></i-input>
+                    <i-button class="font" type="ghost" shape="circle" icon="ios-search"></i-button>
+                    <div class="font">
+                        <br>省份、学校：
+                        <Cascader
+                            :data="data1"
+                            trigger="hover"
+                            placeholder="请选择省份、学校"
+                            class="cascader"
+                            style="width: 300px"
+                            change-on-select
+                        ></Cascader>
+                    </div>
+                </div>
             </div>
-        </Modal>
+
+            <div class="card-div">
+                <Card :bordered="false" class="PCard">
+                    <Row :gutter="64">
+                        <Col span="12">
+                            <!-- 走马灯 -->
+                            <Carousel
+                                v-model="value2"
+                                :height="setting.height"
+                                :autoplay="setting.autoplay"
+                                :autoplay-speed="setting.autoplaySpeed"
+                                :dots="setting.dots"
+                                :radius-dot="setting.radiusDot"
+                                :trigger="setting.trigger"
+                                :arrow="setting.arrow"
+                            >
+                                <CarouselItem>
+                                    <div
+                                        style="display:flex;align-items:center;justify-content:center;"
+                                    >
+                                        <img
+                                            style="width:100%;height:auto;"
+                                            src="https://i.loli.net/2019/06/07/5cf9c592dd34463360.jpg"
+                                        >
+                                    </div>
+                                </CarouselItem>
+                                <CarouselItem>
+                                    <div
+                                        style="display:flex;align-items:center;justify-content:center;"
+                                    >
+                                        <img
+                                            style="width:100%;height:auto;"
+                                            src="https://i.loli.net/2019/06/07/5cf9c7fd128b559705.jpg"
+                                        >
+                                    </div>
+                                </CarouselItem>
+                                <CarouselItem>
+                                    <div
+                                        style="display:flex;align-items:center;justify-content:center;"
+                                    >
+                                        <img
+                                            style="width:100%;height:auto;"
+                                            src="https://i.loli.net/2019/06/07/5cf9c8a254f9b45485.jpg"
+                                        >
+                                    </div>
+                                </CarouselItem>
+                                <CarouselItem>
+                                    <div
+                                        style="display:flex;align-items:center;justify-content:center;"
+                                    >
+                                        <img
+                                            style="width:100%;height:auto;"
+                                            src="https://static-data.eol.cn/upload/school/1551166022_6280_thumb.jpg"
+                                        >
+                                    </div>
+                                </CarouselItem>
+                            </Carousel>
+                        </Col>
+
+                        <Col span="12">
+                            <Card :bordered="false" class="Card">
+                                <p slot="title" style="font-size:1.25rem">高校招生简章资讯</p>
+                                
+                                <p>
+                                    <a
+                                        class="link-a"
+                                        @click="guideText"
+                                    >l&nbsp;&nbsp;&nbsp;东北大学对高考制度改革的解读</a>
+                                </p>
+                                <hr>
+                                <p>
+                                    <a
+                                        class="link-a"
+                                        @click="guideText"
+                                    >l&nbsp;&nbsp;&nbsp;东北大学招生简章发布资讯</a>
+                                </p>
+                                <hr>
+                                <p>
+                                    <a
+                                        class="link-a"
+                                        @click="guideText"
+                                    >l&nbsp;&nbsp;&nbsp;东北大学招生简章今日发布</a>
+                                </p>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <br>
+                    <br>
+                    <Row :gutter="64">
+                        <Col span="12">
+                            <Card :bordered="false" class="Card">
+                                <p slot="title" style="font-size:1.25rem">{{sname[0]}}</p>
+                                <p>
+                                    <a
+                                        v-for="index in policyList.length"
+                                        class="link-a"
+                                        @click="guideText(index)"
+                                    >
+                                        {{policyList[index-1].title}}
+                                        <p></p>
+                                        <Modal
+                                            class="modal"
+                                            v-model="modal"
+                                            v-bind:title="policyList[count].title"
+                                            width="1400"
+                                            @on-ok="ok"
+                                            @on-cancel="cancel"
+                                        >
+                                            <p>{{policyList[count].content}}</p>
+                                        </Modal>
+                                    </a>
+                                </p>
+                            </Card>
+                        </Col>
+                        <Col span="12">
+                            <Card :bordered="false" class="Card">
+                                <p slot="title" style="font-size:1.25rem">高校招生简章详情</p>
+                                <p>
+                                    <a class="link-a" @click="guideText">>东北大学2019年本科生自主招生简章</a>
+                                </p>
+                                <p>
+                                    <a class="link-a" @click="guideText">>东北大学2019年外语类保送生招生简章</a>
+                                </p>
+                                <p>
+                                    <a class="link-a" @click="guideText">>东北大学2019年高水平运动队招生简章</a>
+                                </p>
+                                <p>
+                                    <a class="link-a" @click="guideText">>东北大学2019年艺术类招生简章</a>
+                                </p>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Card>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import axios from "axios";
 export default {
     data() {
         return {
-            postTitle: "",
-            postContent: "",
-            Rtitle1: "北京大学2018年招生章程",
-            Rtitle2: "清华大学2017年本科招生章程",
-            Rtitle3: "北京化工大学招生简章",
-            Rtitle4: "北京工业大学招生简章",
-            Rtitle5: "北京外国语大学招生简章",
-            Rtitle6: "中央音乐学院招生简章",
-            Ltitle1: "中央民族大学招生简章",
-            Ltitle2: "北京邮电大学招生简章",
-            Ltitle3: "北京理工大学招生简章",
-
+            count: 0,
+            modal: false,
+            policyList: [],
+            sname: ["请先选择省份、学校"],
+            title1: "自主招生百问百答",
             title2: "最新自招政策推荐",
             title3: "教育部最新文件以及相应解释",
+            content: "",
             value2: 0,
-            modal: false,
-
             setting: {
                 height: 300,
                 autoplay: true,
@@ -218,18 +229,25 @@ export default {
         };
     },
     methods: {
-        created() {
-            // this.$store.dispatch('getEnrollmentGuide')
+        send() {
             this.$http({
                 method: "post",
-                url: context.state.serviceURL + "/getEnrollmentGuide"
+                url:
+                    "https://fantuan.wxhulu.com:8086/newEntrancePolicy/getProvince/getNewEntrancePolicy",
+                data: {
+                    province: this.sname[0]
+                }
             })
-                .then(function(res) {
-                    console.log(res);
-                    console.log("res.data.title: " + res.data.title);
+                .then(resp => {
+                    console.log(resp);
+                    this.policyList = resp.data.data;
+                    // this.title2=resp.data.data[0].title;
+                    // this.content=resp.data.data[0].content;
                 })
-                .catch(function(err) {
-                    console.log("getEnrollmentGuide有点小问题");
+                .catch(resp => {
+                    console.log(
+                        "请求失败：" + resp.status + "," + resp.statusText
+                    );
                 });
         },
         backToButtonHome() {
@@ -237,59 +255,38 @@ export default {
                 path: "/buttonHome"
             });
         },
-        guideText(event) {
-            var postId = event.currentTarget.getAttribute("id");
-            // alert(postId);
-            // console.log("postID: ",postId)
-            switch (postId) {
-                case "R1":
-                    this.postTitle = this.Rtitle1;
-                    this.postContent = "北京大学招生简章";
-                    break;
-                case "R2":
-                    this.postTitle = this.Rtitle2;
-                    this.postContent = "清华大学招生简章";
-                    break;
-                case "R3":
-                    this.postTitle = this.Rtitle3;
-                    this.postContent = "北京化工大学招生简章";
-                    break;
-                case "R4":
-                    this.postTitle = this.Rtitle4;
-                    this.postContent = "北京工业大学招生简章";
-                    break;
-                case "R5":
-                    this.postTitle = this.Rtitle5;
-                    this.postContent = "北京外国语大学招生简章";
-                    break;
-                case "R6":
-                    this.postTitle = this.Rtitle6;
-                    this.postContent = "中央音乐学院招生简章";
-                    break;
-                case "L1":
-                    this.postTitle = this.Ltitle1;
-                    this.postContent = "中央民族大学招生简章";
-                    break;
-                case "L2":
-                    this.postTitle = this.Ltitle2;
-                    this.postContent = "北京邮电大学招生简章";
-                    break;
-                case "L3":
-                    this.postTitle = this.Ltitle3;
-                    this.postContent = "北京理工大学招生简章";
-                    break;
-            }
-            // alert(this.data1.postContent)
+        guideText(data) {
             this.modal = true;
+            this.count = data - 1;
         }
+        // change(data){
+        // 	this.sname = data;
+        // },对应上方注释
     }
 };
 </script>
 
 <style>
-.back-button {
-    position: fixed;
-    bottom: 2rem;
+.flex-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.selector-div {
+    float: left;
+}
+.card-div {
+    width: 75rem;
+    float: right;
+}
+.h-AJK {
+    font-size: 2.5rem;
+}
+.PCard {
+    background-color: rgb(77, 182, 164, 0.5);
+}
+.Card {
+    background-color: rgb(77, 182, 164, 0.2);
 }
 .breadcrumb {
     padding: 0.65rem;
@@ -298,14 +295,19 @@ export default {
 .font {
     color: aliceblue;
 }
+.back-button {
+    position: fixed;
+    bottom: 2rem;
+}
 .cascader {
     width: 100%;
 }
-.button-tab {
-    float: left;
-}
 .link-a {
-    font-size: 25px;
+    font-size: 1.25rem;
     color: rgba(228, 217, 217, 0.945);
+}
+.right-col-textarea {
+    float: right;
+    background-color: aliceblue;
 }
 </style>

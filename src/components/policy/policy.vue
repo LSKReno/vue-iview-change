@@ -121,6 +121,7 @@ export default {
       setting: {
         height: 300,
         autoplay: true,
+
         autoplaySpeed: 4000,
         dots: 'inside',
         radiusDot: false,
