@@ -1,16 +1,14 @@
 <template>
- <div id="big"> 
-	 <div class="breadcrumb">
-					<Breadcrumb  separator=">" > 
-						<Breadcrumb-item class="font" href="/buttonHome">
-							<Icon type="ios-home-outline"></Icon>首页
-						</Breadcrumb-item>
-						<Breadcrumb-item >
-							<Icon type="ios-search"></Icon>职业测试
-						</Breadcrumb-item>
-					</Breadcrumb>
-	</div>
-	<br><br>
+ <div id="big">
+    
+	 <!-- <div class="breadcrumb"><Breadcrumb  separator=">" > <Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>职业测试</Breadcrumb-item></Breadcrumb></div> -->
+	<br>
+  <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
+  <br><br><br>
+  <div class="page-div">
+    <div class="h-div" id="hDiv">
+      <h1>亲爱的20171234，你上一次的测试结果为ASE型，可以选择再测一次</h1>
+    </div>
     <div class="card-style" id="startDiv">
       <div class="start-div">  
         <h1>霍兰德职业测试</h1>
@@ -22,14 +20,15 @@
         <Button class="button" @click="startTest">开始测试</Button>
       </div>
     </div>
+  </div>
 
 	 	<div class="card-style" id="qDiv" hidden="hidden">
       <!-- 问题 -->
       <div class="div">
         <p>{{index+1}}/60</p>
-        <br>
+        <br><br>
         <p>{{questions[index].title}}</p>
-  			<br><br>
+  			<br><br><br>
         <div class='button-div'>
           <Button class="button" @click="handleAnswer(1)">是的</Button>
           <Button class="button" @click="handleAnswer(0)">不是</Button>
@@ -182,6 +181,7 @@ export default {
 
 		startTest(){
       document.getElementById("startDiv").hidden="hidden";
+      document.getElementById("hDiv").hidden="hidden";
 			document.getElementById("qDiv").hidden=null;
     },
     
@@ -246,18 +246,28 @@ export default {
 </script>
 
 <style>
+.page-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.h-div{
+  color: wheat;
+}
+.h-AJK{
+  font-size: 2.5rem;
+}
 .start-div{
-  font-family: serif;
 	font-size: 1.5rem;
-	color: black;
+	color: wheat;
   flex-direction: column;
   display:flex;
 	align-items:center;
 }
 .div{
-	font-family: serif;
-	font-size: 1.8rem;
-	color: black;
+	
+	font-size: 1.7rem;
+	color: wheat;
   flex-direction: column;
   display:flex;
 	align-items:center;
@@ -273,16 +283,20 @@ export default {
   justify-content:space-around;
 }
 .button{
-  width: 100px;
-  height: 50px;
-  font-size: 18px;
+  width: 7rem;
+  height: 3rem;
+  background-color: rgb(233, 175, 17);
+  font-size: 1.2rem;
+  border: none;
+  color: white;
+  border-radius: 0.3rem;
 }
 .card-style{
-	background-color: #f4f8faef;
+	background-color: rgb(77, 182, 164,0.3);
 	width: 60rem;
 	height: 25rem;
-	margin: 5rem auto 0;
-	box-shadow: 0.0625rem 0.4375rem 1.5625rem #c9c7c8;
+	margin: 2rem auto 0;
+	
 }
 .breadcrumb{
 	padding:0.65rem;

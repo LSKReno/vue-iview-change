@@ -654,6 +654,11 @@
 </script>
 
 <style>
+
+.tabel /deep/ .ivu-table-cell {
+    font-size: .8rem;
+}
+
 .modal-font{
     font-size: 1rem;
 }
