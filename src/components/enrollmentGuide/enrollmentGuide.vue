@@ -93,27 +93,34 @@
 
                         <Col span="12">
                             <Card :bordered="false" class="Card">
-                                <p slot="title" style="font-size:1.25rem">高校招生简章资讯</p>
+                                <p slot="title" style="font-size:1.25rem">高校资讯</p>
                                 
                                 <p>
                                     <a
                                         class="link-a"
                                         @click="guideText"
-                                    >l&nbsp;&nbsp;&nbsp;东北大学对高考制度改革的解读</a>
+                                    >l&nbsp;&nbsp;&nbsp;行者恒远丹心随 滋兰树蕙满庭芳——记中国科学院院士、信息科学与工程学院教授张嗣瀛</a>
                                 </p>
                                 <hr>
                                 <p>
                                     <a
                                         class="link-a"
                                         @click="guideText"
-                                    >l&nbsp;&nbsp;&nbsp;东北大学招生简章发布资讯</a>
+                                    >l&nbsp;&nbsp;&nbsp;东北大学四捧全国大学生机器人竞赛Robocon冠军</a>
                                 </p>
                                 <hr>
                                 <p>
                                     <a
                                         class="link-a"
                                         @click="guideText"
-                                    >l&nbsp;&nbsp;&nbsp;东北大学招生简章今日发布</a>
+                                    >l&nbsp;&nbsp;&nbsp;辽宁省《人工智能导论》教学研讨活动在东北大学举行</a>
+                                </p>
+                                 <hr>
+                                <p>
+                                    <a
+                                        class="link-a"
+                                        @click="guideText"
+                                    >l&nbsp;&nbsp;&nbsp;东北大学—泰克科技“智慧创新联合实验室”正式揭牌成立</a>
                                 </p>
                             </Card>
                         </Col>
@@ -126,22 +133,16 @@
                                 <p slot="title" style="font-size:1.25rem">{{sname[0]}}</p>
                                 <p>
                                     <a
-                                        v-for="index in policyList.length"
-                                        class="link-a"
+                                        class="link-school"
                                         @click="guideText(index)"
                                     >
-                                        {{policyList[index-1].title}}
-                                        <p></p>
-                                        <Modal
-                                            class="modal"
-                                            v-model="modal"
-                                            v-bind:title="policyList[count].title"
-                                            width="1400"
-                                            @on-ok="ok"
-                                            @on-cancel="cancel"
-                                        >
-                                            <p>{{policyList[count].content}}</p>
-                                        </Modal>
+                                        东北大学（Northeastern University），中华人民共和国教育部直属的高水平研究型全国重点大学，坐落于东北中心城市沈阳，
+                                        在河北省秦皇岛市设有东北大学秦皇岛分校，由教育部、辽宁省、沈阳市三方重点共建，是世界一流大学建设高校，
+                                        国家首批“211工程”、“985工程”重点建设高校，入选2011计划、111计划、卓越工程师教育培养计划、国家级新工科研究与实践项目、
+                                        国家建设高水平大学公派研究生项目、中国政府奖学金来华留学生接收院校、国家大学生创新性实验计划、国家级大学生创新创业训练计划、
+                                        全国深化创新创业教育改革示范高校，为21世纪学术联盟、中俄综合性大学联盟成员，全国首批博士、硕士、学士学位授予单位，
+                                        中国最早设立研究生院的32所高校之一，研究生招生34所自主划线高校之一。
+                                        东北大学始建于1923年4月。1928年8月至1937年1月，著名爱国将领张学良将军兼任校长。
                                     </a>
                                 </p>
                             </Card>
@@ -177,7 +178,7 @@ export default {
             count: 0,
             modal: false,
             policyList: [],
-            sname: ["请先选择省份、学校"],
+            sname: ["东北大学"],
             title1: "自主招生百问百答",
             title2: "最新自招政策推荐",
             title3: "教育部最新文件以及相应解释",
@@ -306,6 +307,12 @@ export default {
     font-size: 1.25rem;
     color: rgba(228, 217, 217, 0.945);
 }
+
+.link-school {
+    font-size: 0.8rem;
+    color: rgba(228, 217, 217, 0.945);
+}
+
 .right-col-textarea {
     float: right;
     background-color: aliceblue;
