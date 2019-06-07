@@ -1,15 +1,8 @@
 <template>
     <div class="font">
-        <div class="breadcrumb">
-            <Breadcrumb separator=">">
-                <Breadcrumb-item class="font" href="/buttonHome">
-                    <Icon type="ios-home-outline"></Icon>首页
-                </Breadcrumb-item>
-                <Breadcrumb-item>
-                    <Icon type="ios-search"></Icon>政策解读
-                </Breadcrumb-item>
-            </Breadcrumb>
-        </div>
+        <!-- <div class="breadcrumb"><Breadcrumb separator=">"><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>政策解读</Breadcrumb-item></Breadcrumb></div> -->
+        <br>
+        <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
         <br>
         <br>
 
@@ -19,100 +12,94 @@
 			</Button>
 		</div>
 		
-		
-		<!-- <div> -->
-		<!-- 使用栅格构建布局 -->
-		<!-- 需要通过选择学校来动态改变内容，所以图片和所有连接不可以写死 -->
-    <Row type="flex" justify="space-around" class="code-row-bg">
-        <Col span="4" >
-          <div class="selector-div">
-			      <!-- <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" /> 用on-change也可以实现-->
-            <al-selector style="width:210px" level="0" @on-change="send" data-type="name" v-model="sname" searchable size="large"/>
-          </div>
-        </Col>
-      
-        <Col span="9">
-          <!-- 走马灯 -->
-          <Carousel v-model="value2" 
-              :height="setting.height"
-              :autoplay="setting.autoplay"
-              :autoplay-speed="setting.autoplaySpeed"
-              :dots="setting.dots"
-              :radius-dot="setting.radiusDot"
-              :trigger="setting.trigger"
-              :arrow="setting.arrow">
-              <CarouselItem>
-                  <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cbb2b40a326650.jpg" >
-                  </div>
-              </CarouselItem>
-              <CarouselItem>
-                 <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cbf3863e468321.jpg" >
-                  </div>
-              </CarouselItem>
-              <CarouselItem>
-                  <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cc03ce19b78164.jpg" >
-                  </div>
-              </CarouselItem>
-              <CarouselItem>
-                  <div style="display:flex;align-items:center;justify-content:center;">
-                    <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cc1313e6137047.jpg" >
-                  </div>
-              </CarouselItem>
-          </Carousel>
-        </Col>
+    <div class="flex-div">
+    <div class="selector-div">
+			<!-- <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" /> 用on-change也可以实现-->
+      <al-selector style="width:210px;" level="0" @on-change="send" data-type="name" v-model="sname" searchable size="large"/>
+    </div>
 
-        <Col span="9">
-          <Card>
-            <p slot="title"></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-          </Card>
-        </Col>
-    </Row>
-    <br>
-    <br>
-    <Row type="flex" justify="space-around" class="code-row-bg">
-        <Col span="4">
-      
-        </Col>
-        <Col span="9">
-          <Card>
-            <p slot="title">{{sname[0]}}</p>
-            <p>
-              <a v-for="index in policyList.length" class="link-a" @click="guideText(index)">
-                {{policyList[index-1].title}}
-                <p></p>
-                <Modal class="modal" v-model="modal" v-bind:title="policyList[count].title" width="1400" @on-ok="ok" @on-cancel="cancel">
-                  <p>{{policyList[count].content}}</p>
-                </Modal>
-              </a>
-              
-            </p>
-            
-          </Card>
-        </Col>
-        <Col span="9">
-          <Card>
-            <p slot="title"></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-            <p><a class="link-a" @click="guideText">{{title2}}</a></p>
-          </Card>
-        </Col>
-      
-    </Row>
+    <div class="card-div">
+      <Card :bordered="false" class="PCard">
+        <Row :gutter="64">  
+            <Col span="12">
+              <!-- 走马灯 -->
+              <Carousel v-model="value2" 
+                  :height="setting.height"
+                  :autoplay="setting.autoplay"
+                  :autoplay-speed="setting.autoplaySpeed"
+                  :dots="setting.dots"
+                  :radius-dot="setting.radiusDot"
+                  :trigger="setting.trigger"
+                  :arrow="setting.arrow">
+                  <CarouselItem>
+                      <div style="display:flex;align-items:center;justify-content:center;">
+                        <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cbb2b40a326650.jpg" >
+                      </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div style="display:flex;align-items:center;justify-content:center;">
+                        <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/07/5cf940fa8069733900.jpg" >
+                      </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                      <div style="display:flex;align-items:center;justify-content:center;">
+                        <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cc03ce19b78164.jpg" >
+                      </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                      <div style="display:flex;align-items:center;justify-content:center;">
+                        <img style="width:100%;height:auto;" src="https://i.loli.net/2019/06/02/5cf3cc1313e6137047.jpg" >
+                      </div>
+                  </CarouselItem>
+              </Carousel>
+            </Col>
+
+            <Col span="12">
+              <Card :bordered="false" class="Card">
+                <p slot="title" style="font-size:1.25rem">新高考资讯</p>
+                <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;高考制度改革带来什么？科目自主选择 录取方式多样</a></p>
+                <hr>
+                <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;最后一次文理分科高考周五开考 明年，北京将开始新高考</a></p>
+                <hr>
+                <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;“新高考”给孩子选择人生的权利,自己的未来自己设计</a></p>
+              </Card>
+            </Col>
+        </Row>
+        <br>
+        <br>
+        <Row :gutter="64">
+            <Col span="12">
+              <Card :bordered="false" class="Card">
+                <p slot="title" style="font-size:1.25rem">{{sname[0]}}</p>
+                <p>
+                  <a v-for="index in policyList.length" class="link-a" @click="guideText(index)">
+                    {{policyList[index-1].title}}
+                    <p></p>
+                    <Modal class="modal" v-model="modal" v-bind:title="policyList[count].title" width="1400" @on-ok="ok" @on-cancel="cancel">
+                      <p>{{policyList[count].content}}</p>
+                    </Modal>
+                  </a>
+                </p>
+              </Card>
+            </Col>
+            <Col span="12">
+              <Card :bordered="false" class="Card">
+                <p slot="title" style="font-size:1.25rem">新高考政策详情</p>
+                <p><a class="link-a" @click="guideText">>综合素质评价规则</a></p>
+                <p><a class="link-a" @click="guideText">>走班制教学模式</a></p>
+                <p><a class="link-a" @click="guideText">>新高考改革选科攻略</a></p>
+                <p><a class="link-a" @click="guideText">>新政策下学生该做什么</a></p>
+                
+              </Card>
+            </Col>
+          
+        </Row>
+      </Card>
+    </div>
+    </div>
     
-	<!-- </div> -->
+    
+	
 
   </div>
 </template>
@@ -176,6 +163,22 @@ export default {
 </script>
 
 <style>
+.flex-div{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+.selector-div{
+  float: left;
+}
+.card-div{
+  width: 75rem;
+  float: right;
+}
+.h-AJK{
+  font-size: 2.5rem;
+}
 .PCard{
     background-color: rgb(77, 182, 164,0.5);
 }
@@ -197,7 +200,7 @@ export default {
   width: 100%;
 }
 .link-a{
-  font-size: 25px;
+  font-size: 1.25rem;
   color: rgba(228, 217, 217, 0.945);
 }
 .right-col-textarea {

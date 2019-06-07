@@ -4,7 +4,7 @@
     <!-- 使用栅格构建布局 -->
     <Card :bordered="false" class="PCard">
     <Row :gutter="64">
-        <Col span="10">
+        <Col span="12">
           <!-- 走马灯 -->
           <Carousel v-model="value2" 
               :height="setting.height"
@@ -38,14 +38,14 @@
           </Carousel>
         </Col>
       
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title3}}</p>
-            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;2019自主招生新规出台！名额缩减，学科竞赛或成唯一条件.....</a></p>
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;七所高校自主招生初审通过人数减少，与提高报名条件相关，仅一所高校保留笔试</a></p>
             <hr>
             <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;东北大学2019自主招生初审名单！共553人，95%考生无学科竞赛省一奖</a></p>
             <hr>
-            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;夏季高考之前的自主招生与单独招生差异很大，不了解后果很严重</a></p>
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;2019年高校自主招生成“鸡肋”，5所大学初审人数不足10人！</a></p>
             
             
           </Card>
@@ -54,22 +54,20 @@
     <br>
     <br>
     <Row :gutter="64">
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title1}}</p>
-            <p><a class="link-a" @click="guideText">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主招生又称自主选拔，是由高校拿出一定比例的招生名额，在高考的基础上通过院校的综合评价体系的选拔。最终获得拟录取资格的考生在高考成绩达到院校标准时，可在高考录取中享有一定的投档及专业录取优惠。在此说明，自主招生是正常高考的辅助手段，是对高考制度的重要补充，并不是高考的另外招生。</a></p>
+            <p><a class="link-a" @click="guideText">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主招生初审，即各高校对报名学生提交的申请材料进行审核，综合在校文化成绩以及文体德育情况和竞赛奖项选出合格报名者，审核通过后会在高校官网给出公示</a></p>
             
           </Card>
         </Col>
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title2}}</p>
-            <p><a class="link-a" @click="guideText">>参加自主招生的作用</a></p>
-            <p><a class="link-a" @click="guideText">>参加自主招生的条件</a></p>
-            <p><a class="link-a" @click="guideText">>什么样的学生适合参加自主招生</a></p>
-            <p><a class="link-a" @click="guideText">>自主招生报考流程</a></p>
-            <p><a class="link-a" @click="guideText">>自主招生的优惠政策</a></p>
-            <p><a class="link-a" @click="guideText">>自主招生详细时间</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生报名需要材料</a></p>
+            <p><a class="link-a" @click="guideText">>低年级自主招生科学规划</a></p>
+            <p><a class="link-a" @click="guideText">>申请材料规范模板</a></p>
+            <p><a class="link-a" @click="guideText">>自荐信的书写方式</a></p>
           </Card>
         </Col>
     </Row>
@@ -86,9 +84,9 @@
   export default {
     data () {
       return {
-        title1: '自招小讲堂',
-        title2: '自主招生详情',
-        title3: '最新资讯',
+        title1: '初审小讲堂',
+        title2: '自招初审详情',
+        title3: '初审资讯',
         value2: 0,
         modal: false,
         setting: {

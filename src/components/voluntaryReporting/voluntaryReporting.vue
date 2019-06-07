@@ -88,14 +88,14 @@
                         {{c3}}&nbsp;&nbsp;&nbsp;
                     </span>
                 </div>
-
-                <div class="more-search">
+                <!-- 暂时不要的功能 -->
+                <!-- <div class="more-search">
                     <span class="title">录取批次 ></span>
                     <span v-for="(c4,index) in choice4" @click="handleClick4(index)":class="{'spanActive':current4===index}">
                         {{c4}}&nbsp;&nbsp;&nbsp;
                     </span>
                     
-                </div>
+                </div> -->
             
         </div>
 

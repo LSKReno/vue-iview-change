@@ -4,7 +4,7 @@
     <!-- 使用栅格构建布局 -->
     <Card :bordered="false" class="PCard">
     <Row :gutter="64">
-        <Col span="10">
+        <Col span="12">
           <!-- 走马灯 -->
           <Carousel v-model="value2" 
               :height="setting.height"
@@ -38,38 +38,37 @@
           </Carousel>
         </Col>
       
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title3}}</p>
-            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;2019自主招生新规出台！名额缩减，学科竞赛或成唯一条件.....</a></p>
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;2019年自主招生复试降分与录取匹配分析：今年大部分高校自主招生的匹配率比较低，尤其是文科类的。</a></p>
             <hr>
-            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;东北大学2019自主招生初审名单！共553人，95%考生无学科竞赛省一奖</a></p>
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;天津大学2019自主招生初审共通过695人！附天大复试备考指南</a></p>
             <hr>
-            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;夏季高考之前的自主招生与单独招生差异很大，不了解后果很严重</a></p>
-            
-            
+            <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;清华自主招生复试　H7N9禽流感进考题</a></p>
+
           </Card>
         </Col>
     </Row>
     <br>
     <br>
     <Row :gutter="64">
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title1}}</p>
-            <p><a class="link-a" @click="guideText">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主招生又称自主选拔，是由高校拿出一定比例的招生名额，在高考的基础上通过院校的综合评价体系的选拔。最终获得拟录取资格的考生在高考成绩达到院校标准时，可在高考录取中享有一定的投档及专业录取优惠。在此说明，自主招生是正常高考的辅助手段，是对高考制度的重要补充，并不是高考的另外招生。</a></p>
+            <p><a class="link-a" @click="guideText">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主招生复试包括面试和笔试两个部分，面试主要考查学生平时知识积累和自身综合素质，采取由大学老师（一般 3-5 人）对考生进行个人问答或随机小组讨论的形式；笔试主要考查学生的实际应用能力，知识覆盖极广</a></p>
             
           </Card>
         </Col>
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title2}}</p>
-            <p><a class="link-a" @click="guideText">>参加自主招生的作用</a></p>
-            <p><a class="link-a" @click="guideText">>参加自主招生的条件</a></p>
-            <p><a class="link-a" @click="guideText">>什么样的学生适合参加自主招生</a></p>
-            <p><a class="link-a" @click="guideText">>自主招生报考流程</a></p>
-            <p><a class="link-a" @click="guideText">>自主招生的优惠政策</a></p>
-            <p><a class="link-a" @click="guideText">>自主招生详细时间</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生复试排名计算</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生笔试科目题型</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生的院校志愿填报</a></p>
+            <p><a class="link-a" @click="guideText">>笔试面试服装要求</a></p>
+            <p><a class="link-a" @click="guideText">>自主招生笔试难度</a></p>
+            
           </Card>
         </Col>
     </Row>
@@ -86,7 +85,7 @@
   export default {
     data () {
       return {
-        title1: '自招小讲堂',
+        title1: '复试小讲堂',
         title2: '自主招生详情',
         title3: '最新资讯',
         value2: 0,

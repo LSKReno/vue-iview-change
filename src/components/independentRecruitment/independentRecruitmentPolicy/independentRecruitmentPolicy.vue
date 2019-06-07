@@ -4,7 +4,7 @@
     <!-- 使用栅格构建布局 -->
     <Card :bordered="false" class="PCard">
     <Row :gutter="64">
-        <Col span="10">
+        <Col span="12">
           <!-- 走马灯 -->
           <Carousel v-model="value2" 
               :height="setting.height"
@@ -38,7 +38,7 @@
           </Carousel>
         </Col>
       
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title3}}</p>
             <p><a class="link-a" @click="guideText">l&nbsp;&nbsp;&nbsp;2019自主招生新规出台！名额缩减，学科竞赛或成唯一条件.....</a></p>
@@ -54,14 +54,14 @@
     <br>
     <br>
     <Row :gutter="64">
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title1}}</p>
             <p><a class="link-a" @click="guideText">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自主招生又称自主选拔，是由高校拿出一定比例的招生名额，在高考的基础上通过院校的综合评价体系的选拔。最终获得拟录取资格的考生在高考成绩达到院校标准时，可在高考录取中享有一定的投档及专业录取优惠。在此说明，自主招生是正常高考的辅助手段，是对高考制度的重要补充，并不是高考的另外招生。</a></p>
             
           </Card>
         </Col>
-        <Col span="10">
+        <Col span="12">
           <Card :bordered="false" class="Card">
             <p slot="title" style="font-size:1.25rem">{{title2}}</p>
             <p><a class="link-a" @click="guideText">>参加自主招生的作用</a></p>
