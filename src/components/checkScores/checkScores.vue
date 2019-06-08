@@ -108,21 +108,28 @@
 
 			<Modal class="modal" v-model="recommendModal" width="800">
           <p slot="header" style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;">选科推荐</p>
-          <p class="modal-font">根据你的三次成绩，为你推荐的选课如下：</p>
-          <p class="modal-font">理科成绩较好，推荐选择</p>
-          <p class="modal-font">1.物理+化学+生物</p>
-          <p class="modal-font">2.物理+化学+地理</p>
-          
-				
-          <div slot="footer">
+          <p class="modal-font">请选择你想学习的专业</p>
+					<Select v-model="model1" style="width:200px">
+        		<Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+    			</Select>
+					<br><br><br>
+						<p class="modal-font">你选择的专业为软件工程</p>
+						<p class="modal-font">该专业的必考科目为：物理</p>
+						<p class="modal-font">根据你已录入的成绩信息，为你推荐选科如下</p>
+						<p class="modal-font">1.物理+化学+生物</p>
+						<p class="modal-font">2.物理+化学+地理</p>
+					
+					<div slot="footer"></div>
+          <!-- <div slot="footer">
               <i-button
                   type="circle"
                   size="large"
                   style="width:100%;background-color:#ff9999;color:white;"
                   @click="recommendModal=false"
-                >我知道啦</i-button>
-          </div>
+                >确定</i-button>
+          </div> -->
       </Modal>
+
 			
 			<div>
 					<Button class="back-button" type="text" @click="backToButtonHome" >
@@ -137,6 +144,32 @@
 export default {
 	data(){
 		return {
+			cityList: [
+                    {
+                        value: 'New York',
+                        label: '软件工程'
+                    },
+                    {
+                        value: 'London',
+                        label: '计算机科学与技术'
+                    },
+                    {
+                        value: 'Sydney',
+                        label: '电子信息'
+                    },
+                    {
+                        value: 'Ottawa',
+                        label: '哲学'
+                    },
+                    {
+                        value: 'Paris',
+                        label: '物理学'
+                    },
+                    {
+                        value: 'Canberra',
+                        label: '经济管理'
+                    }
+                ],
 			inputScoreModal: false,
 			recommendModal:false,
 			scores: 0, 
@@ -175,7 +208,7 @@ export default {
 		},
 		recommend(){
 			this.recommendModal = true;
-		}
+		},
 	}
 }
 
@@ -197,7 +230,7 @@ export default {
   justify-content:space-around;
 }
 .modal-font{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .card-div-score{
 	width: 90%

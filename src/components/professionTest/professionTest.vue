@@ -7,7 +7,7 @@
   <br><br><br>
   <div class="page-div">
     <div class="h-div" id="hDiv">
-      <h1>亲爱的20171234，你上一次的测试结果为ASE型，可以选择再测一次</h1>
+      <h1>亲爱的20171234，你上一次的测试结果为ASE型，你喜欢的工作要求具备艺术修养、创造力、表达能力和直觉，并将其用于语言、行为、声音、颜色和形式的审美、思索和感受，具备相应的能力。不善于事务性工作。适合你的职业是演员、导演、作曲家、乐队指挥等；可以选择再测一次</h1>
     </div>
     <div class="card-style" id="startDiv">
       <div class="start-div">  
@@ -252,6 +252,7 @@ export default {
   align-items: center;
 }
 .h-div{
+  width: 60rem;
   color: wheat;
 }
 .h-AJK{
