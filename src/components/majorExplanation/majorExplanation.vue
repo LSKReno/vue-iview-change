@@ -1,209 +1,220 @@
 <template>
     <div class="font">
-        <div class="breadcrumb">
-            <Breadcrumb separator=">">
-                <Breadcrumb-item class="font" href="/buttonHome">
-                    <Icon type="ios-home-outline"></Icon>首页
-                </Breadcrumb-item>
-                <Breadcrumb-item>
-                    <Icon type="ios-search"></Icon>专业详解
-                </Breadcrumb-item>
-            </Breadcrumb>
-        </div>
+        <!-- 专业详解<div class="breadcrumb"><Breadcrumb separator=">"><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>专业详解</Breadcrumb-item></Breadcrumb></div> -->
         <br>
-
-        <div class="search-part">
-            <i-select :model.sync="majorLevel" style="width:7rem">
-                <i-option v-for="item in majorLevelsList" :value="item.value">{{ item.label }}</i-option>
-            </i-select>
-            <i-input
-                v-model="searchedMajor"
-                icon="ios-search-strong"
-                placeholder="搜索专业"
-                style="width: 200px"
-            ></i-input>
-            <i-button
-                class="font"
-                type="ghost"
-                shape="circle"
-                icon="ios-search"
-                @click="searchMajor"
-            ></i-button>
-        </div>
+        <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
         <br>
-        <div class="major-type-container">
-            <!-- 专业大类 -->
+        <br>
+        
+        <div class="flex-div">
             <div>
-                <Row>
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >哲学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >经济学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >工学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >文学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >教育学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >历史学</i-button>
-                    </i-col>
-                </Row>
-
-                <Row>
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >法学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >理学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >农学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >管理学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >艺术学</i-button>
-                    </i-col>
-
-                    <i-col span="4">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-big-type"
-                        >医学</i-button>
-                    </i-col>
-                </Row>
-
-                <Row>
-                    <i-col span="3" v-for="item in majorSpecificType">
-                        <i-button
-                            @click="toMajors"
-                            icon="paper-airplane"
-                            type="ghost"
-                            class="major-specific-type"
-                        >{{item}}</i-button>
-                    </i-col>
-                </Row>
+                <i-input v-model="searchedMajor" icon="ios-search-strong" placeholder="搜索专业" style="width: 200px"></i-input>
+                <i-button class="font" type="ghost" shape="circle" icon="ios-search" @click="searchMajor"></i-button>
+                
             </div>
-            <br>
-            <br>
-            <Row>
-                <div class="block" @click="relevantMajorInfo">
-                    <i-col span="12">
-                        <a style="color:white;font-size:1rem">收入最高的十大专业</a>
-                    </i-col>
-                </div>
-                <div class="block" @click="relevantMajorInfo">
-                    <i-col span="12">
-                        <a style="color:white;font-size:1rem">就业率最高的十大专业</a>
-                    </i-col>
-                </div>
-                <div class="block" @click="relevantMajorInfo">
-                    <i-col span="12">
-                        <a style="color:white;font-size:1rem">收入最高的十大专业</a>
-                    </i-col>
-                </div>
-            </Row>
-            <br>
-            <Row>
-                <div class="block" @click="relevantMajorInfo">
-                    <i-col span="12">
-                        <a style="color:white;font-size:1rem">收入最高的十大专业</a>
-                    </i-col>
-                </div>
-                <div class="block" @click="relevantMajorInfo">
-                    <i-col span="12">
-                        <a style="color:white;font-size:1rem">收入最高的十大专业</a>
-                    </i-col>
-                </div>
-                <div class="block" @click="relevantMajorInfo">
-                    <i-col span="12">
-                        <a style="color:white;font-size:1rem">收入最高的十大专业</a>
-                    </i-col>
-                </div>
-            </Row>
+            
+            <div class="card-div">
+                <Card :bordered="false" class="PCard">
+                    <div >
+                        <span style="font-size:1.5rem">专业选择 ></span>
+                        <span class="span" v-for="(c,index) in majorSpecificType" @click="MhandleClick(index,c)":class="{'spanActive':current===index}">
+                            {{c}}&nbsp;&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <br>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td >专业类别</td>
+                                    <td >专业名称</td>
+                                    <td>报考热度排名</td>
+                                    <td>层次</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td rowspan="4">哲学类</td>
+                                    <td >哲学</td>
+                                    <td>全国25 哲学类1</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >逻辑学</td>
+                                    <td>全国93 哲学类2</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >宗教学</td>
+                                    <td>全国714 哲学类4</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >伦理学</td>
+                                    <td>全国682 哲学类3</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td rowspan="6">经济学类</td>
+                                    <td >经济学</td>
+                                    <td>全国1067 经济学类13</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >经济统计学</td>
+                                    <td>全国1158 经济学类15</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >国民经济管理</td>
+                                    <td>全国42 经济学类4</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >资源与环境经济学</td>
+                                    <td>全国199 经济学类7</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >商务经济学</td>
+                                    <td>全国2 经济学类1</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >能源经济</td>
+                                    <td>全国200 经济学类8</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td rowspan="2">财政学类</td>
+                                    <td >财政学</td>
+                                    <td>全国18 财政学类2</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >税收学</td>
+                                    <td>全国1179 财政学类16</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td rowspan="8">金融学类</td>
+                                    <td >金融学</td>
+                                    <td>全国1033 金融学类12</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >金融工程</td>
+                                    <td>全国24 金融学类3</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >保险学</td>
+                                    <td>全国1188 金融学类17</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >投资学</td>
+                                    <td>全国663 金融学类9</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >金融数学</td>
+                                    <td>全国123 金融学类6</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >信用管理</td>
+                                    <td>全国686 金融学类11</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >经济与金融</td>
+                                    <td>全国115 金融学类5</td>
+                                    <td>本科</td>
+                                </tr>
+                                <tr
+                                    @click="majorInfo"
+                                    
+                                >
+                                    <td >精算学</td>
+                                    <td>全国1257 金融学类18</td>
+                                    <td>本科</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </Card>
+            </div>
         </div>
-
+        
+        
+            
+        <!-- 收入modal -->
         <Modal class="modal" v-model="mainModal" width="1200">
             <p slot="header" style="color:black;text-align:center;font-size:1.25rem;">
                 <span>收入最高的十大专业</span>
             </p>
             <div>
-                &nbsp&nbsp&nbsp&nbsp家长在为孩子选择大学专业时，毕业后的工资收入、福利待遇是一个重要的参考标准。
-                <br>&nbsp&nbsp&nbsp&nbsp什么专业领跑月收入排行榜？
-                <br>&nbsp&nbsp&nbsp&nbsp2017年就业蓝皮书数据显示：本科方面，2016届毕业半年后月收入较高的专业是信息安全（5906元），其次是软件工程（5869元）……
+                &nbsp;&nbsp;&nbsp;&nbsp;家长在为孩子选择大学专业时，毕业后的工资收入、福利待遇是一个重要的参考标准。
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;什么专业领跑月收入排行榜？
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;2017年就业蓝皮书数据显示：本科方面，2016届毕业半年后月收入较高的专业是信息安全（5906元），其次是软件工程（5869元）……
             </div>
             <div class="mainbody-con">
                 <div class="mainbody-per">
@@ -626,7 +637,7 @@
                 >我知道啦</i-button>
             </div>
         </Modal>
-
+        <!-- 哲学modal -->
         <Modal class="modal" v-model="subModal" width="1200">
             <p slot="header" style="color:black;text-align:center;font-size:1.25rem;">
                 <span>哲学</span>
@@ -747,8 +758,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="hoverschoolname">北京大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >北京大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -761,8 +772,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">中国人民大学</td>
-                                <td class="hoverschoolname">哲学（政治学与经济学（PPE实验班）</td>
+                                <td >中国人民大学</td>
+                                <td >哲学（政治学与经济学（PPE实验班）</td>
                                 <td>是</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -775,8 +786,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">中国人民大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >中国人民大学</td>
+                                <td >哲学</td>
                                 <td>是</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -789,8 +800,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">北京航空航天大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >北京航空航天大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>否</td>
                                 <td>是</td>
@@ -803,8 +814,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">北京师范大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >北京师范大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -817,8 +828,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">首都师范大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >首都师范大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -831,8 +842,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">中央民族大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >中央民族大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>否</td>
                                 <td>是</td>
@@ -845,8 +856,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">中国政法大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >中国政法大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>是</td>
                                 <td>否</td>
@@ -859,8 +870,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">南开大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >南开大学</td>
+                                <td >哲学</td>
                                 <td>是</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -873,8 +884,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">河北大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >河北大学</td>
+                                <td >哲学</td>
                                 <td>是</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -887,8 +898,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">山西大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >山西大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -901,8 +912,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">内蒙古大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >内蒙古大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -915,8 +926,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">辽宁大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >辽宁大学</td>
+                                <td >哲学</td>
                                 <td>是</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -929,8 +940,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">吉林大学</td>
-                                <td class="hoverschoolname">哲学（PhilosophyProgram）</td>
+                                <td >吉林大学</td>
+                                <td >哲学（PhilosophyProgram）</td>
                                 <td>否</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -943,8 +954,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">吉林大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >吉林大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -957,8 +968,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">黑龙江大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >黑龙江大学</td>
+                                <td >哲学</td>
                                 <td>是</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -971,8 +982,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">哈尔滨理工大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >哈尔滨理工大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -985,8 +996,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">齐齐哈尔大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >齐齐哈尔大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>否</td>
                                 <td>否</td>
@@ -999,8 +1010,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">同济大学</td>
-                                <td class="hoverschoolname">哲学</td>
+                                <td >同济大学</td>
+                                <td >哲学</td>
                                 <td>否</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -1013,8 +1024,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="hoverschoolname">华东师范大学</td>
-                                <td class="hoverschoolname">哲学（非师范）</td>
+                                <td >华东师范大学</td>
+                                <td >哲学（非师范）</td>
                                 <td>否</td>
                                 <td>是</td>
                                 <td>是</td>
@@ -1052,6 +1063,7 @@ require("echarts/theme/macarons");
 export default {
     data() {
         return {
+            current: 0,
             mainModal: false,
             subModal: false,
             myChart1: null,
@@ -1059,8 +1071,20 @@ export default {
             myChart3: null,
             myChart4: null,
             searchedMajor: "",
-            majorLevel: "",
             majorSpecificType: [
+                "全部",
+                "哲学",
+                "经济学",
+                "工学",
+                "文学",
+                "教育学",
+                "历史学",
+                "法学",
+                "理学",
+                "农学",
+                "管理学",
+                "艺术学",
+                "医学",
                 "农林牧渔",
                 "资源环境与安全",
                 "能源动力与材料",
@@ -1081,24 +1105,17 @@ export default {
                 "公安与司法",
                 "公共管理与服务"
             ],
-            majorLevelsList: [
-                {
-                    value: "undergraduateCourse",
-                    label: "本科"
-                },
-                {
-                    value: "specializedSubject",
-                    label: "专科（高职）"
-                }
-            ],
-            model11: ""
         };
     },
     methods: {
+        MhandleClick(index,c){
+            this.current = index;
+        },
         relevantMajorInfo() {
             this.mainModal = true;
         },
         majorInfo() {
+            console.log("fjhdfaskldf")
             this.subModal = true;
             this.drawChart1();
             this.drawChart2();
@@ -1374,6 +1391,29 @@ export default {
 </script>
 
 <style scoped>
+.card-div{
+    width: 80%;
+}
+.flex-div{
+
+display: flex;
+flex-direction: row;
+justify-content:space-around;
+}
+.PCard{
+  
+  background-color: rgb(77, 182, 164,0.5);
+}
+.span{
+    font-size: 1.1rem;
+}
+.spanActive{
+    color: wheat;
+    font-size: 1.3rem;
+}
+.h-AJK{
+  font-size: 2.5rem;
+}
 table {
     color: black;
     border: 1px solid black;
@@ -1382,17 +1422,17 @@ table {
 }
 th {
     border: 1px solid black;
-    height: 50px;
+    
 }
 td {
     border: 1px solid black;
-    padding: 5px;
+    padding: 3px;
 }
 table tr:nth-child(odd) {
-    background: rgb(231, 205, 205);
+    background: #caeeee;
 }
 table tr:nth-child(even) {
-    background: #caeeee;
+    background: white;
 }
 .search-part {
     margin-left: 0.5rem;
@@ -1413,35 +1453,9 @@ table tr:nth-child(even) {
     flex-direction: column;
     margin: 0 6%;
 }
-.major-type-container {
-    padding: 0rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
-}
-
-.major-big-type {
-    font-size: 1.25rem;
-    border-radius: 0.9375rem;
-    width: 7.5rem;
-    height: 2.6rem;
-    background-color: #66cccc;
-    color: #f0f8ff;
-}
-.major-specific-type {
-    font-size: 0.75rem;
-    border-radius: 0.9375rem;
-    width: 8rem;
-    height: 2rem;
-    background-color: #e793cbef;
-    color: #f0f8ff;
-}
 .back-button {
     position: fixed;
     bottom: 2rem;
-}
-.breadcrumb {
-    padding: 0.65rem;
-    background-color: aliceblue;
 }
 .i-select {
     width: 14.375rem;

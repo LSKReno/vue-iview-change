@@ -14,16 +14,7 @@
 
         <div class="flex-div">
             <div class="selector-div">
-                <!-- <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" /> 用on-change也可以实现-->
-                <al-selector
-                    style="width:210px;"
-                    level="0"
-                    @on-change="send"
-                    data-type="name"
-                    v-model="sname"
-                    searchable
-                    size="large"
-                />
+                <Cascader :data="data1" trigger="hover" placeholder="请选择省份、学校" class="cascader" style="width: 15rem" change-on-select></Cascader>
             </div>
 
             <div class="card-div">
@@ -86,7 +77,7 @@
 
                         <Col span="12">
                             <Card :bordered="false" class="Card">
-                                <p slot="title" style="font-size:1.25rem">名校直通资讯</p>
+                                <p slot="title" style="font-size:1.25rem">{{title2}}</p>
                                 <p>
                                     <a
                                         class="link-a"
@@ -98,14 +89,14 @@
                                     <a
                                         class="link-a"
                                         @click="guideText"
-                                    >l&nbsp;&nbsp;&nbsp;2019高考降分录取!除了自主招生,还有综合评价、专项计划</a>
+                                    >l&nbsp;&nbsp;&nbsp;清华北大发布2019专项招生计划，农村考试降分录取！</a>
                                 </p>
                                 <hr>
                                 <p>
                                     <a
                                         class="link-a"
                                         @click="guideText"
-                                    >l&nbsp;&nbsp;&nbsp;农村专项计划的利弊 有什么好处</a>
+                                    >l&nbsp;&nbsp;&nbsp;农村专项计划的利弊 有什么好处?农村有专项计划究竟是否合适？</a>
                                 </p>
                             </Card>
                         </Col>
@@ -115,13 +106,13 @@
                     <Row :gutter="64">
                         <Col span="12">
                             <Card :bordered="false" class="Card">
-                                <p slot="title" style="font-size:1.25rem">{{sname[0]}}</p>
+                                <p slot="title" style="font-size:1.25rem">{{title3}}</p>
                                 <p>
                                     <a
                                         class="link-a"
                                         @click="guideText(index)"
                                     >
-                                        高校专项计划，是国家为更好地促进教育公平、让更多的农村学生上大学而出台的一项优惠政策。、
+                                        高校专项计划，是国家为更好地促进教育公平、让更多的农村学生上大学而出台的一项优惠政策。
 																				定向招收边远、贫困、民族等地区县（含县级市）以下高中勤奋好学、成绩优良的农村学生，
 																				招生高校为教育部直属高校和其他自主招生试点高校。
                                     </a>
@@ -130,18 +121,18 @@
                         </Col>
                         <Col span="12">
                             <Card :bordered="false" class="Card">
-                                <p slot="title" style="font-size:1.25rem">高校专项计划</p>
+                                <p slot="title" style="font-size:1.25rem">{{university}}</p>
                                 <p>
-                                    <a class="link-a" @click="guideText">>南京大学（2019）高校专项招生简章</a>
+                                    <a class="link-a" @click="guideText">>北京大学专项招生计划</a>
                                 </p>
                                 <p>
-                                    <a class="link-a" @click="guideText">>东北大学（2019）高校专项招生简章</a>
+                                    <a class="link-a" @click="guideText">>北大高校专项专业2018录取分数</a>
                                 </p>
                                 <p>
                                     <a class="link-a" @click="guideText">>北京大学（2019）高校专项招生简章</a>
                                 </p>
                                 <p>
-                                    <a class="link-a" @click="guideText">>南方科技大学（2019）高校专项招生简章</a>
+                                    <a class="link-a" @click="guideText">>北京大学2018年“筑梦计划”招生简章</a>
                                 </p>
                             </Card>
                         </Col>
@@ -156,13 +147,45 @@
 export default {
     data() {
         return {
+            data1: [
+                {
+                    value: "beijing",
+                    label: "北京",
+                    children: [
+                        {
+                            value: "beijingdaxue",
+                            label: "北京大学"
+                        },
+                        {
+                            value: "qinghuadaxue",
+                            label: "清华大学"
+                        },
+                        {
+                            value: "beijinghangkonghangtiandaxue",
+                            label: "北京航空航天大学"
+                        }
+                    ]
+                },
+                {
+                    value: "liaoning",
+                    label: "辽宁",
+                    children: [
+                        {
+                            value: "dongbeidaxue",
+                            label: "东北大学"
+                        },
+                        {
+                            value: "dalianligongdaxue",
+                            label: "大连理工大学"
+                        }
+                    ]
+                }
+            ],
             count: 0,
             modal: false,
-            policyList: [],
-            sname: ["高校专项计划"],
-            title1: "自主招生百问百答",
-            title2: "最新自招政策推荐",
-            title3: "教育部最新文件以及相应解释",
+            title3: "高校专项计划",
+            university: "北京大学",
+            title2: "名校直通资讯",
             content: "",
             value2: 0,
             setting: {
@@ -189,7 +212,7 @@ export default {
             })
                 .then(resp => {
                     console.log(resp);
-                    this.policyList = resp.data.data;
+                    // this.policyList = resp.data.data;
                     // this.title2=resp.data.data[0].title;
                     // this.content=resp.data.data[0].content;
                 })

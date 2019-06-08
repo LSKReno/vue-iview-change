@@ -16,8 +16,8 @@
             <div class="selector-div">
                 <!-- <al-selector style="width:250px"  level="0" data-type="name" @on-change="change" /> 用on-change也可以实现-->
                 <!-- <al-selector style="width:210px;" level="0" @on-change="send" data-type="name" v-model="sname" searchable size="large"/> -->
-                <div class="button-tab">
-                    <i-input icon="ios-search-strong" placeholder="搜索高校" style="width: 270px"></i-input>
+                <div>
+                    <i-input icon="ios-search-strong" placeholder="搜索高校" style="width:14rem"></i-input>
                     <i-button class="font" type="ghost" shape="circle" icon="ios-search"></i-button>
                     <div class="font">
                         <br>省份、学校：
@@ -26,7 +26,7 @@
                             trigger="hover"
                             placeholder="请选择省份、学校"
                             class="cascader"
-                            style="width: 300px"
+                            style="width: 15rem"
                             change-on-select
                         ></Cascader>
                     </div>
@@ -93,7 +93,7 @@
 
                         <Col span="12">
                             <Card :bordered="false" class="Card">
-                                <p slot="title" style="font-size:1.25rem">高校资讯</p>
+                                <p slot="title" style="font-size:1.25rem">{{title2}}</p>
                                 
                                 <p>
                                     <a
@@ -130,26 +130,26 @@
                     <Row :gutter="64">
                         <Col span="12">
                             <Card :bordered="false" class="Card">
-                                <p slot="title" style="font-size:1.25rem">{{sname[0]}}</p>
+                                <p slot="title" style="font-size:1.25rem">{{university }}</p>
                                 <p>
                                     <a
                                         class="link-school"
                                         @click="guideText(index)"
                                     >
-                                        东北大学（Northeastern University），中华人民共和国教育部直属的高水平研究型全国重点大学，坐落于东北中心城市沈阳，
-                                        在河北省秦皇岛市设有东北大学秦皇岛分校，由教育部、辽宁省、沈阳市三方重点共建，是世界一流大学建设高校，
-                                        国家首批“211工程”、“985工程”重点建设高校，入选2011计划、111计划、卓越工程师教育培养计划、国家级新工科研究与实践项目、
+                                        东北大学（Northeastern University），教育部直属的高水平研究型全国重点大学，坐落于东北中心城市沈阳，
+                                        由教育部、辽宁省、沈阳市三方重点共建，是世界一流大学建设高校，
+                                        国家首批“211工程”、“985工程”重点建设高校，
                                         国家建设高水平大学公派研究生项目、中国政府奖学金来华留学生接收院校、国家大学生创新性实验计划、国家级大学生创新创业训练计划、
-                                        全国深化创新创业教育改革示范高校，为21世纪学术联盟、中俄综合性大学联盟成员，全国首批博士、硕士、学士学位授予单位，
+                                        全国深化创新创业教育改革示范高校，全国首批博士、硕士、学士学位授予单位，
                                         中国最早设立研究生院的32所高校之一，研究生招生34所自主划线高校之一。
-                                        东北大学始建于1923年4月。1928年8月至1937年1月，著名爱国将领张学良将军兼任校长。
+                                        始建于1923年4月。1928年8月至1937年1月，著名爱国将领张学良将军兼任校长。
                                     </a>
                                 </p>
                             </Card>
                         </Col>
                         <Col span="12">
                             <Card :bordered="false" class="Card">
-                                <p slot="title" style="font-size:1.25rem">高校招生简章详情</p>
+                                <p slot="title" style="font-size:1.25rem">{{title4}}</p>
                                 <p>
                                     <a class="link-a" @click="guideText">>东北大学2019年本科生自主招生简章</a>
                                 </p>
@@ -177,11 +177,9 @@ export default {
         return {
             count: 0,
             modal: false,
-            policyList: [],
-            sname: ["东北大学"],
-            title1: "自主招生百问百答",
-            title2: "最新自招政策推荐",
-            title3: "教育部最新文件以及相应解释",
+            university: "东北大学",
+            title2: "高校资讯",
+            title4: "高校招生简章详情",
             content: "",
             value2: 0,
             setting: {
@@ -240,8 +238,8 @@ export default {
                 }
             })
                 .then(resp => {
-                    console.log(resp);
-                    this.policyList = resp.data.data;
+                    // console.log(resp);
+                    // this.policyList = resp.data.data;
                     // this.title2=resp.data.data[0].title;
                     // this.content=resp.data.data[0].content;
                 })
@@ -309,7 +307,7 @@ export default {
 }
 
 .link-school {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: rgba(228, 217, 217, 0.945);
 }
 

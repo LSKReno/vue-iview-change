@@ -1,71 +1,135 @@
 <template>
   <div class="font">
-        <div class="breadcrumb">
-					<Breadcrumb  separator=">" > 
-						<Breadcrumb-item class="font" href="/buttonHome">
-							<Icon type="ios-home-outline"></Icon>首页
-						</Breadcrumb-item>
-						<Breadcrumb-item >
-							<Icon type="ios-search"></Icon>查看成绩
-						</Breadcrumb-item>
-					</Breadcrumb>
-				</div>
+        <!-- 查看成绩<div class="breadcrumb"><Breadcrumb  separator=">" ><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item ><Icon type="ios-search"></Icon>查看成绩</Breadcrumb-item></Breadcrumb></div> -->
 		<br>	
+		<h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
+		<br>
+		<br>
 		
-		<div class="container">
-			<!-- 左 -->
-			<div>
-				<div>
-					<i-input icon="ios-search-strong" placeholder="搜索高校" style="width: 200px"></i-input> <i-button class="font" type="ghost" shape="circle" icon="ios-search"></i-button>
-					<br><br>
+			
+			
+			<div class="flex-div-score">
+				<div class="h-div-score">
+      		<h1>亲爱的20171234，以下为你近三次录入的成绩</h1>
+    		</div>
+				<br><br><br>
+				<div class="card-div-score">
+					<Card :bordered="false" class="PCard">
+						<Row :gutter="64">  
+							<Col span="8">
+								<Card :bordered="false" class="Card">
+									<p style="font-size:1.3rem;">语文成绩：120</p> 
+									<p style="font-size:1.3rem;">数学成绩：145</p> 
+									<p style="font-size:1.3rem;">英语成绩：139</p> 
+									<p style="font-size:1.5rem;color: rgb(228, 206, 177)">理科成绩：</p> 
+									<p style="font-size:1.3rem;">物理成绩：90</p> 
+									<p style="font-size:1.3rem;">化学成绩：80</p> 
+									<p style="font-size:1.3rem;">生物成绩：80</p>
+									<p style="font-size:1.5rem;color: rgb(228, 206, 177)">文科成绩：</p> 
+									<p style="font-size:1.3rem;">政治成绩：70</p> 
+									<p style="font-size:1.3rem;">历史成绩：60</p> 
+									<p style="font-size:1.3rem;">地理成绩：80</p>
+								</Card>
+							</Col>
+							<Col span="8">
+								<Card :bordered="false" class="Card">
+									<p style="font-size:1.3rem;">语文成绩：121</p> 
+									<p style="font-size:1.3rem;">数学成绩：148</p> 
+									<p style="font-size:1.3rem;">英语成绩：144</p> 
+									<p style="font-size:1.5rem;color: rgb(228, 206, 177)">理科成绩：</p> 
+									<p style="font-size:1.3rem;">物理成绩：95</p> 
+									<p style="font-size:1.3rem;">化学成绩：86</p> 
+									<p style="font-size:1.3rem;">生物成绩：88</p>
+									<p style="font-size:1.5rem;color: rgb(228, 206, 177)">文科成绩：</p> 
+									<p style="font-size:1.3rem;">政治成绩：75</p> 
+									<p style="font-size:1.3rem;">历史成绩：67</p> 
+									<p style="font-size:1.3rem;">地理成绩：75</p>
+								</Card>
+							</Col>    
+							<Col span="8">
+								<Card :bordered="false" class="Card">
+									<p style="font-size:1.3rem;">语文成绩：115</p> 
+									<p style="font-size:1.3rem;">数学成绩：145</p> 
+									<p style="font-size:1.3rem;">英语成绩：140</p> 
+									<p style="font-size:1.5rem;color: rgb(228, 206, 177)">理科成绩：</p> 
+									<p style="font-size:1.3rem;">物理成绩：91</p> 
+									<p style="font-size:1.3rem;">化学成绩：88</p> 
+									<p style="font-size:1.3rem;">生物成绩：88</p>
+									<p style="font-size:1.5rem;color: rgb(228, 206, 177)">文科成绩：</p> 
+									<p style="font-size:1.3rem;">政治成绩：70</p> 
+									<p style="font-size:1.3rem;">历史成绩：65</p> 
+									<p style="font-size:1.3rem;">地理成绩：75</p>
+								</Card>
+							</Col>
+						</Row>
+					</Card>
 				</div>
-				<p class="title">教务处成绩查询</p>
-				<br>
-				<i-select :model.sync="gradeSelection" clearable style="width:200px" label-in-value=true>
-						<i-option v-for="item in gradeList" :value="item.value">{{ item.label }}</i-option>
-				</i-select>
-				<i-button style="color: aliceblue" shape="circle" type="ghost" icon="ios-search-strong" @click="checkScores"> 查询</i-button>
-				<br>
-				<div class="score">
-					<p>亲爱的{{name}}：</p>
-					您的省份：{{province}}
+				<br><br><br>
+				<div class="button-div">
+					<Button class="button" @click="inputScore">录入成绩</Button>
+      		<Button class="button" @click="recommend">选科推荐</Button>
+				</div>
+			</div>
+			
+			<Modal class="modal" v-model="inputScoreModal" width="600">
+          <p slot="header" style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;">录入成绩</p>
+          <p style="font-size:1.3rem;">语文成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p>
+					<br> 
+					<p style="font-size:1.3rem;">数学成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p> 
+			  	<br>
+					<p style="font-size:1.3rem;">英语成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p> 
 					<br>
-					您的总成绩为：{{chinese+math+english+physics+chemistry+biology+politics+history+geography}}
-					<p>语文成绩：{{chinese}}</p> 
-					<p>数学成绩：{{math}}</p> 
-					<p>英语成绩：{{english}}</p> 
-					<p style="font-size:1.3rem;color: rgb(228, 206, 177)">理科成绩：</p> 
-					<p>物理成绩：{{physics}}</p> 
-					<p>化学成绩：{{chemistry}}</p> 
-					<p>生物成绩：{{biology}}</p>
-					<p style="font-size:1.3rem;color: rgb(228, 206, 177)">文科成绩：</p> 
-					<p>政治成绩：{{politics}}</p> 
-					<p>历史成绩：{{history}}</p> 
-					<p>地理成绩：{{geography}}</p> 
-				</div>
-				<div>
+					<p style="font-size:1.5rem;color: rgb(228, 206, 177)">理科成绩：</p> 
+					<br>
+					<p style="font-size:1.3rem;">物理成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p> 
+					<br>
+					<p style="font-size:1.3rem;">化学成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p> 
+					<br>
+					<p style="font-size:1.3rem;">生物成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p>
+					<br>
+					<p style="font-size:1.5rem;color: rgb(228, 206, 177)">文科成绩：</p> 
+					<br>
+					<p style="font-size:1.3rem;">政治成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p> 
+					<br>
+					<p style="font-size:1.3rem;">历史成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p> 
+					<br>
+					<p style="font-size:1.3rem;">地理成绩：&nbsp;&nbsp;<Input v-model="value" size="big" style="width: 300px" /></p>
+					
+				
+          <div slot="footer">
+              <i-button
+                  type="circle"
+                  size="large"
+                  style="width:100%;background-color:#ff9999;color:white;"
+                  @click="inputScoreModal=false"
+                >确定</i-button>
+          </div>
+      </Modal>
+
+			<Modal class="modal" v-model="recommendModal" width="800">
+          <p slot="header" style="color:rgb(241, 123, 123);   text-align:center;font-size:1.25rem;">选科推荐</p>
+          <p class="modal-font">根据你的三次成绩，为你推荐的选课如下：</p>
+          <p class="modal-font">理科成绩较好，推荐选择</p>
+          <p class="modal-font">1.物理+化学+生物</p>
+          <p class="modal-font">2.物理+化学+地理</p>
+          
+				
+          <div slot="footer">
+              <i-button
+                  type="circle"
+                  size="large"
+                  style="width:100%;background-color:#ff9999;color:white;"
+                  @click="recommendModal=false"
+                >我知道啦</i-button>
+          </div>
+      </Modal>
+			
+			<div>
 					<Button class="back-button" type="text" @click="backToButtonHome" >
 						<Icon type="android-arrow-back" size="32" color="#fff"></Icon>
 					</Button>
 				</div>
 			</div>
-
-			<!-- 中 -->
-			<div>
-				<p class="title">高考选科推荐</p>
-			</div>
-
-			<!-- 右 -->
-			<div>
-				<p class="title">选科推荐</p>
-			</div>
-
-		</div>
-
-
-
-			
-
   </div>
 </template>
 
@@ -73,8 +137,8 @@
 export default {
 	data(){
 		return {
-			gradeSelection: "",
-			name: "",
+			inputScoreModal: false,
+			recommendModal:false,
 			scores: 0, 
 			chinese: 0, 
 			math: 0, 
@@ -84,33 +148,12 @@ export default {
 			biology: 0, 
 			politics: 0, 
 			history: 0, 
-			geography: 0, 
-
-			province: "",
-			gradeList: [{
-					value: 'seniorOne',
-          label: '高中一年级'
-        },
-        {
-          value: 'seniorTwo',
-          label: '高中二年级'
-        },
-        {
-          value: 'seniorThree',
-          label: '高中三年级'
-				}
-			]
-
-									
-
+			geography: 0,
 		}
 	},
 	methods: {
 		checkScores(){
-				console.log(this.gradeSelection);
-								
-				this.name = "霜降",
-				this.province = "辽宁省", 
+				console.log(this.gradeSelection);				 
 				this.scores = 0, 
 				this.chinese = 118, 
 				this.math = 135, 
@@ -126,43 +169,70 @@ export default {
             this.$router.push({
                  path: '/buttonHome'
             });        
-    }
+		},
+		inputScore(){
+			this.inputScoreModal = true;
+		},
+		recommend(){
+			this.recommendModal = true;
+		}
 	}
 }
 
 </script>
 
-<style scoped>
+<style>
+.button{
+  width: 7rem;
+  height: 3rem;
+  background-color: rgb(233, 175, 17);
+  font-size: 1.2rem;
+  border: none;
+  color: white;
+  border-radius: 0.3rem;
+}
+.button-div{
+  display:flex;
+  width: 80%;
+  justify-content:space-around;
+}
+.modal-font{
+    font-size: 1rem;
+}
+.card-div-score{
+	width: 90%
+}
+.flex-div-score{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.h-AJK{
+  font-size: 2.5rem;
+}
+.PCard{
+  background-color: rgb(77, 182, 164,0.5);
+}
+.Card{
+  background-color: rgb(77, 182, 164,0.2)
+}
+.h-div-score{
+	font-size: 1.1rem;
+  color: wheat;
+	
+}
 .score{
 	background-color: rgb(99, 180, 201);
 	font-size: 1rem;
-	padding: 2rem;
-	margin-top: 1rem;
-	margin-left: 3rem;
-	margin-right: 10rem;
 }
-.title{
-	font-size: 2rem;
-	color: bisque
-}
+
 .back-button{
 	position: fixed;
 	bottom: 2rem;
 }
-.breadcrumb{
-	padding:0.65rem;
-	background-color: aliceblue
-}
 .font{
 	color: aliceblue
 }
-.container{
-    display: grid;
- 		grid-template-columns: repeat(3, 33.33%);
- 		grid-template-rows: repeat(3, 33.33%);
-		grid-template-areas: 'a b c'
-                         'a b c'
-                         'a b c';
-}
+
 
 </style>

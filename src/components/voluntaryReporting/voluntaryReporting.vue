@@ -1,16 +1,10 @@
 <template>
     <div class="font">
-        <div class="breadcrumb">
-            <Breadcrumb separator=">">
-                <Breadcrumb-item class="font" href="/buttonHome">
-                    <Icon type="ios-home-outline"></Icon>首页
-                </Breadcrumb-item>
-                <Breadcrumb-item>
-                    <Icon type="ios-search"></Icon>专业选择指导
-                </Breadcrumb-item>
-            </Breadcrumb>
-        </div>
+        <!-- 专业选择指导<div class="breadcrumb"><Breadcrumb separator=">"><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>专业选择指导</Breadcrumb-item></Breadcrumb></div> -->
         <br>
+        <h1 class="h-AJK">爱简课</h1>
+        <br>
+        
         <div class="tabs-style">
             <Tabs type="card" name="name1">
                 <TabPane label="按分数查询" icon="md-school" name="name1">
@@ -25,19 +19,20 @@
                                 @on-change="change"
                             />
                         </Col>
-                        <Col span="1" style="font-size:1.25rem;">科类 ></Col>
+                        <Col span="1" style="font-size:1.25rem;color:white">科类 ></Col>
                         <Col span="3" style="font-size:1.25rem;">
                             <RadioGroup v-model="artsAndSciences" type="button" size="large">
                                 <Radio label="理科"></Radio>
                                 <Radio label="文科"></Radio>
                             </RadioGroup>
                         </Col>
-                        <Col span="3" style="font-size:1.25rem;">
-                            <Input placeholder="请输入分数..." v-model="score"></Input>
+                        <Col span="5" style="font-size:1.25rem;color:white">
+                            <!-- <Input placeholder="请输入分数..." v-model="score"></Input> -->
+                            点击预测查看结果(成绩采用近三次录入结果)
                         </Col>
                         <Col span="3" style="font-size:1.25rem;">
                             &nbsp;
-                            <Button shape="circle" icon="ios-search" @click="scorePredict">预测</Button>
+                            <Button class="button" icon="ios-search" @click="scorePredict">预测</Button>
                         </Col>
                     </Row>
                 </TabPane>
@@ -59,35 +54,36 @@
                         </Col>
                         <Col span="3" style="font-size:1.25rem;">
                             &nbsp;
-                            <Button shape="circle" icon="ios-search" @click="positionPredict">预测</Button>
+                            <Button class="button" icon="ios-search" @click="positionPredict">预测</Button>
                         </Col>
                     </Row>
                 </TabPane>
             </Tabs>
         </div>
-        
+        <br>
         <div>
             
                 <div class="more-search">
                     <span class="title">录取概率 ></span>
-                    <span v-for="(c1,index) in choice1" @click="handleClick1(index,c1)":class="{'spanActive':current1===index}">
+                    <span class="span" v-for="(c1,index) in choice1" @click="handleClick1(index,c1)":class="{'spanActive':current1===index}">
                         {{c1}}&nbsp;&nbsp;&nbsp;
                     </span>
                 </div>
-                
+                <br>
                 <div class="more-search">
                     <span class="title">目标省份 ></span>
-                    <span v-for="(c2,index) in choice2" v-model="province" @click="handleClick2(index,c2)":class="{'spanActive':current2===index}">
+                    <span class="span" v-for="(c2,index) in choice2" v-model="province" @click="handleClick2(index,c2)":class="{'spanActive':current2===index}">
                         {{c2}}&nbsp;&nbsp;&nbsp;
                     </span>
                 </div>
-                
+                <br>
                 <div class="more-search">
                     <span class="title">高校层次 ></span>
-                    <span v-for="(c3,index) in choice3" @click="handleClick3(index)":class="{'spanActive':current3===index}">
+                    <span class="span" v-for="(c3,index) in choice3" @click="handleClick3(index)":class="{'spanActive':current3===index}">
                         {{c3}}&nbsp;&nbsp;&nbsp;
                     </span>
                 </div>
+                <br>
                 <!-- 暂时不要的功能 -->
                 <!-- <div class="more-search">
                     <span class="title">录取批次 ></span>
@@ -246,7 +242,7 @@ export default {
                 }
                 ],
             artsAndSciences: "sciences",
-            score: "",
+            score: 650,
             position:"",
             sccessUniversity: [],
             PsccessUniversity: [],
@@ -430,13 +426,29 @@ export default {
 </script>
 
 <style scoped>
+.button{
+    border-radius: 0.3rem;
+    width: 5rem;
+    height: 2rem;
+    font-size: .7rem;
+    background-color:rgb(233, 175, 17);
+    border: none;
+    color: white;
+}
+.h-AJK{
+  font-size: 2.5rem;
+}
 .center{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+.span{
+    font-size: 1rem;
+}
 .spanActive{
-    color: rgb(77, 161, 240);
+    color: wheat;
+    font-size: 1.1rem;
 }
 .back-button {
     position: fixed;

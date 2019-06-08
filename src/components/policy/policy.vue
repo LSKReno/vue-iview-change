@@ -163,9 +163,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .flex-div{
-  
   display: flex;
   flex-direction: row;
   justify-content:space-around;
@@ -181,10 +180,10 @@ export default {
   font-size: 2.5rem;
 }
 .PCard{
-    background-color: rgb(77, 182, 164,0.5);
+  background-color: rgb(77, 182, 164,0.5);
 }
 .Card{
-    background-color: rgb(77, 182, 164,0.2)
+  background-color: rgb(77, 182, 164,0.2)
 }
 .breadcrumb {
   padding: 0.65rem;
