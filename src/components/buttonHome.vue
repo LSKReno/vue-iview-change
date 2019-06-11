@@ -118,7 +118,7 @@ export default {
     name: "buttonHome",
     data() {
         return {
-            msg: "简课服务中心自助终端",
+            msg: "服务中心自助终端",
             login_modal: false,
             form: {
                 userName: "",

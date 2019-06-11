@@ -1,8 +1,8 @@
 <template>
   <div class="font">
         <!-- 查看成绩<div class="breadcrumb"><Breadcrumb  separator=">" ><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item ><Icon type="ios-search"></Icon>查看成绩</Breadcrumb-item></Breadcrumb></div> -->
-		<br>	
-		<h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
+		<br>
+		<h1 class="h-AJK">&nbsp;&nbsp;&nbsp;查看成绩</h1>
 		<br>
 		<br>
 		

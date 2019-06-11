@@ -3,7 +3,7 @@
     
 	 <!-- <div class="breadcrumb"><Breadcrumb  separator=">" > <Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>职业测试</Breadcrumb-item></Breadcrumb></div> -->
 	<br>
-  <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
+  <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;职业测试</h1>
   <br><br><br>
   <div class="page-div">
     <div class="h-div" id="hDiv">

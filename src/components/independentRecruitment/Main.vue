@@ -2,10 +2,10 @@
     <div class="layout main-wrap"  :class="{'layout-hide-text': hideMenuText}">
       <Menu mode="horizontal"  active-name="1">
             <div class="layout-logo" v-if="!hideMenuText"  :style="{width: !hideMenuText?'200px':''}" style="font-size:30px">
-              爱简课
+              自主招生
             </div>
             <div class="layout-logo" v-else   :style="{width: hideMenuText?'60px':''}">
-              爱简课
+              自主招生
             </div>
             <div class="layout-header" :style="{left: hideMenuText?'60px':'200px'}">
                 <Button type="text" @click="toggleClick">

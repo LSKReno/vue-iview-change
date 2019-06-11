@@ -2,7 +2,7 @@
     <div class="font">
         <!-- <div class="breadcrumb"><Breadcrumb separator=">"><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>政策解读</Breadcrumb-item></Breadcrumb></div> -->
         <br>
-        <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;爱简课</h1>
+        <h1 class="h-AJK">&nbsp;&nbsp;&nbsp;招生简章</h1>
         <br>
         <br>
 

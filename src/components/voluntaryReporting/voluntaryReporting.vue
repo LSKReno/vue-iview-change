@@ -2,7 +2,7 @@
     <div class="font">
         <!-- 专业选择指导<div class="breadcrumb"><Breadcrumb separator=">"><Breadcrumb-item class="font" href="/buttonHome"><Icon type="ios-home-outline"></Icon>首页</Breadcrumb-item><Breadcrumb-item><Icon type="ios-search"></Icon>专业选择指导</Breadcrumb-item></Breadcrumb></div> -->
         <br>
-        <h1 class="h-AJK">爱简课</h1>
+        <h1 class="h-AJK">专业指导</h1>
         <br>
         
         <div class="tabs-style">
